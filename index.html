@@ -107,6 +107,10 @@
     .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; height:70px}
     .brand{display:flex; align-items:center; gap:.65rem; font-weight:800; font-size:1.12rem; text-decoration:none; letter-spacing:-.01em}
     .brand img{height:56px; width:auto; object-fit:contain; border-radius:10px}
+    .brand .wordmark{color:var(--ink)}
+    .brand .wordmark b{font-weight:800}
+    html[data-theme="dark"] .brand .wordmark b{color:#8fce3c}
+    html[data-theme="light"] .brand .wordmark b{color:#3f7a24}
     .nav-links{display:flex; align-items:center; gap:.2rem; list-style:none; margin:0; padding:0}
     .nav-links a{
       display:block; padding:.45rem .8rem; border-radius:999px;
@@ -198,6 +202,15 @@
       .chips{grid-template-columns:repeat(2,1fr)}
       .cards, .projects .cards, .duo{grid-template-columns:1fr}
       .contact-grid{grid-template-columns:1fr}
+      /* Service cards: small cropped icon beside the title, text takes priority */
+      .cards .card{display:grid; grid-template-columns:auto 1fr; column-gap:1rem; align-items:center}
+      .cards .card img{
+        width:92px; height:92px; aspect-ratio:1; margin-bottom:0; grid-row:span 2;
+        clip-path:inset(16% round 14px); transform:scale(1.45); transform-origin:center;
+      }
+      .cards .card .tag{grid-column:2; justify-self:start; align-self:end}
+      .cards .card h3{grid-column:2; margin:0.2rem 0 0}
+      .cards .card p, .cards .card ul{grid-column:1 / -1}
       .nav-links{
         display:none; position:absolute; top:70px; left:1rem; right:1rem;
         background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
@@ -218,8 +231,9 @@
   <header>
     <div class="container nav">
       <a href="#top" class="brand" aria-label="Limon-IT home">
-        <img class="icon-dark" src="assets/logo-mark-dark.svg" alt="Limon-IT">
-        <img class="icon-light" src="assets/logo-mark-light.svg" alt="Limon-IT">
+        <img class="icon-dark" src="assets/logo-mark-dark.svg" alt="">
+        <img class="icon-light" src="assets/logo-mark-light.svg" alt="">
+        <span class="wordmark">Limon-<b>IT</b></span>
       </a>
       <nav id="site-nav">
         <ul class="nav-links">
@@ -501,8 +515,9 @@
   <footer>
     <div class="container foot">
       <a href="#top" class="brand" aria-label="Limon-IT home">
-        <img class="icon-dark" src="assets/logo-mark-dark.svg" alt="Limon-IT">
-        <img class="icon-light" src="assets/logo-mark-light.svg" alt="Limon-IT">
+        <img class="icon-dark" src="assets/logo-mark-dark.svg" alt="">
+        <img class="icon-light" src="assets/logo-mark-light.svg" alt="">
+        <span class="wordmark">Limon-<b>IT</b></span>
       </a>
       <div>
         <span class="nl">Uw Microsoft Cloud Security Specialist — vanuit Zoetermeer, voor heel Nederland.</span>
