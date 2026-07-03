@@ -217,7 +217,7 @@
       .cards .card{display:grid; grid-template-columns:auto 1fr; column-gap:1rem; align-items:center}
       .cards .card img{
         width:92px; height:92px; aspect-ratio:1; margin-bottom:0; grid-row:span 2;
-        clip-path:inset(16% round 14px); transform:scale(1.45); transform-origin:center;
+        object-fit:contain; border-radius:12px;
       }
       .cards .card .tag{grid-column:2; justify-self:start; align-self:end}
       .cards .card h3{grid-column:2; margin:0.2rem 0 0}
