@@ -102,7 +102,7 @@
     }
     .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; height:70px}
     .brand{display:flex; align-items:center; gap:.65rem; font-weight:800; font-size:1.12rem; text-decoration:none; letter-spacing:-.01em}
-    .brand svg{height:38px; width:auto}
+    .brand img{height:56px; width:auto; object-fit:contain; border-radius:10px}
     .nav-links{display:flex; align-items:center; gap:.2rem; list-style:none; margin:0; padding:0}
     .nav-links a{
       display:block; padding:.45rem .8rem; border-radius:999px;
@@ -147,7 +147,7 @@
       background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
       padding:1.4rem; box-shadow:var(--shadow); display:flex; flex-direction:column;
     }
-    .card img{width:100%; aspect-ratio:16/10; object-fit:contain; background:var(--icon-bg); border-radius:12px; margin-bottom:1rem}
+    .card img{width:100%; aspect-ratio:4/3; object-fit:contain; background:var(--icon-bg); border-radius:12px; margin-bottom:1rem}
     .card .tag{
       align-self:flex-start; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
       background:var(--lemon); color:var(--green-deep); padding:.28rem .65rem; border-radius:999px; margin-bottom:.7rem;
@@ -186,7 +186,7 @@
     footer{border-top:1px solid var(--border); background:var(--bg-2); padding:2.2rem 0; margin-top:2rem}
     .foot{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; color:var(--muted); font-size:.92rem}
     .foot .brand{font-size:1rem}
-    .foot svg{height:30px}
+    .foot .brand img{height:48px; width:auto}
 
     /* ============ Mobile ============ */
     @media (max-width: 900px){
@@ -214,16 +214,8 @@
   <header>
     <div class="container nav">
       <a href="#top" class="brand" aria-label="Limon-IT home">
-        <!-- Lemon-shield mark, colours from the logo -->
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="32" cy="38" rx="20" ry="23" fill="#f7d65a" stroke="#1e4729" stroke-width="3.5"/>
-          <path d="M32 15c-1-5 2-8 6-9" fill="none" stroke="#1e4729" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M30 12c-8-8-18-5-20-1 6 5 14 6 20 1z" fill="#1e4729"/>
-          <path d="M32 24l11 4v9c0 7-5 11-11 13-6-2-11-6-11-13v-9z" fill="#1e4729"/>
-          <circle cx="32" cy="36" r="4" fill="#f7d65a"/>
-          <path d="M30 38h4l1.5 8h-7z" fill="#f7d65a"/>
-        </svg>
-        <span>Limon-IT</span>
+        <img class="icon-dark" src="assets/logo-full-dark.png" alt="Limon-IT — Your CyberSecurity Partner">
+        <img class="icon-light" src="assets/logo-full-light.png" alt="Limon-IT — Your CyberSecurity Partner">
       </a>
       <nav id="site-nav">
         <ul class="nav-links">
@@ -261,7 +253,8 @@
           </div>
         </div>
         <div class="hero-img">
-          <img src="assets/image-2.png" alt="Limon-IT lemon shield logo" />
+          <img class="icon-dark" src="assets/logo-full-dark.png" alt="Limon-IT — Your CyberSecurity Partner" />
+          <img class="icon-light" src="assets/logo-full-light.png" alt="Limon-IT — Your CyberSecurity Partner" />
         </div>
       </div>
     </section>
@@ -316,7 +309,7 @@
           <article class="card">
             <img class="icon-dark" src="assets/icons/defender-xdr-dark.png" alt="Microsoft Defender Suite" />
             <img class="icon-light" src="assets/icons/defender-xdr-light.png" alt="Microsoft Defender Suite" />
-            <span class="tag"><span class="nl">Endpoint-beveiliging</span><span class="en">Endpoint security</span></span>
+            <span class="tag">Defender XDR</span>
             <h3>Microsoft Defender Suite</h3>
             <p class="nl">Uw apparaten, e-mail en clouddiensten worden actief bewaakt en beschermd – automatisch en 24/7.</p>
             <p class="en">Your devices, email and cloud services are actively monitored and protected – automatically, around the clock.</p>
@@ -504,15 +497,8 @@
   <footer>
     <div class="container foot">
       <a href="#top" class="brand" aria-label="Limon-IT home">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="32" cy="38" rx="20" ry="23" fill="#f7d65a" stroke="#1e4729" stroke-width="3.5"/>
-          <path d="M32 15c-1-5 2-8 6-9" fill="none" stroke="#1e4729" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M30 12c-8-8-18-5-20-1 6 5 14 6 20 1z" fill="#1e4729"/>
-          <path d="M32 24l11 4v9c0 7-5 11-11 13-6-2-11-6-11-13v-9z" fill="#1e4729"/>
-          <circle cx="32" cy="36" r="4" fill="#f7d65a"/>
-          <path d="M30 38h4l1.5 8h-7z" fill="#f7d65a"/>
-        </svg>
-        <span>Limon-IT</span>
+        <img class="icon-dark" src="assets/logo-full-dark.png" alt="Limon-IT — Your CyberSecurity Partner">
+        <img class="icon-light" src="assets/logo-full-light.png" alt="Limon-IT — Your CyberSecurity Partner">
       </a>
       <div>
         <span class="nl">Uw Microsoft Cloud Security Specialist — vanuit Zoetermeer, voor heel Nederland.</span>
