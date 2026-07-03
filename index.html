@@ -138,6 +138,7 @@
     .badge b{color:var(--accent)}
     .hero-cta{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.4rem}
     .hero-img{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--border)}
+    .hero-img .hero-mark{display:none}
 
     /* ============ Frameworks ============ */
     .frameworks{background:var(--bg-2)}
@@ -207,7 +208,11 @@
 
     /* ============ Mobile ============ */
     @media (max-width: 900px){
-      .hero-inner{grid-template-columns:1fr}
+      /* Hero: small logo mark next to the headline text */
+      .hero-inner{grid-template-columns:1fr auto; gap:1rem; align-items:start}
+      .hero-img{order:2; border:none; box-shadow:none; overflow:visible; align-self:start; margin-top:2.4rem}
+      .hero-img .hero-full{display:none !important}
+      .hero-img .hero-mark{display:block; width:104px}
       .chips{grid-template-columns:repeat(2,1fr)}
       .cards, .projects .cards, .duo{grid-template-columns:1fr}
       .contact-grid{grid-template-columns:1fr}
@@ -220,12 +225,13 @@
       .cards .card .tag{grid-column:2; justify-self:start; align-self:end}
       .cards .card h3{grid-column:2; margin:0.2rem 0 0}
       .cards .card p, .cards .card ul{grid-column:1 / -1}
-      /* Partners & results: text first, small image below */
-      .partners-grid{grid-template-columns:1fr}
-      .partners-visual{order:2}
-      .partners-visual img{max-width:260px}
-      .results-grid{grid-template-columns:1fr}
-      .results-visual img{max-width:260px}
+      /* Partners & results: small image beside the text, text takes priority */
+      .partners-grid{grid-template-columns:112px 1fr; gap:.9rem; align-items:start}
+      .partners-visual{align-self:start; position:sticky; top:80px}
+      .partners-visual img{max-width:112px}
+      .results-grid{grid-template-columns:1fr 112px; gap:.9rem; align-items:start}
+      .results-visual{align-self:start; position:sticky; top:80px}
+      .results-visual img{max-width:112px}
       .nav-links{
         display:none; position:absolute; top:70px; left:1rem; right:1rem;
         background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
@@ -237,6 +243,11 @@
     @media (max-width: 480px){
       .chips{grid-template-columns:1fr}
       .hero-cta .btn{width:100%; justify-content:center}
+      .hero-img .hero-mark{width:84px}
+      .partners-grid{grid-template-columns:84px 1fr}
+      .partners-visual img{max-width:84px}
+      .results-grid{grid-template-columns:1fr 84px}
+      .results-visual img{max-width:84px}
     }
   </style>
 </head>
@@ -287,8 +298,10 @@
           </div>
         </div>
         <div class="hero-img">
-          <img class="icon-dark" src="assets/logo-full-dark.svg" alt="Limon-IT — Your CyberSecurity Partner" />
-          <img class="icon-light" src="assets/logo-full-light.svg" alt="Limon-IT — Your CyberSecurity Partner" />
+          <img class="hero-full icon-dark" src="assets/logo-full-dark.svg" alt="Limon-IT — Your CyberSecurity Partner" />
+          <img class="hero-full icon-light" src="assets/logo-full-light.svg" alt="Limon-IT — Your CyberSecurity Partner" />
+          <img class="hero-mark icon-dark" src="assets/logo-mark-dark.svg" alt="Limon-IT" />
+          <img class="hero-mark icon-light" src="assets/logo-mark-light.svg" alt="Limon-IT" />
         </div>
       </div>
     </section>
