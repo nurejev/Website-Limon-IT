@@ -34,6 +34,7 @@
       --hero-glow:radial-gradient(900px 500px at 85% -100px, #1e472955 0%, transparent 60%),
                   radial-gradient(700px 400px at -10% 30%, #f7d65a14 0%, transparent 60%);
       --shadow:0 10px 30px rgba(0,0,0,.35);
+      --icon-bg:#030606;
     }
     html[data-theme="light"]{
       --bg:#ffffff;
@@ -49,7 +50,12 @@
       --hero-glow:radial-gradient(900px 500px at 85% -100px, #cdeed4 0%, transparent 60%),
                   radial-gradient(700px 400px at -10% 30%, #fdf3c9 0%, transparent 60%);
       --shadow:0 10px 30px rgba(18,51,31,.10);
+      --icon-bg:#fdfdfd;
     }
+
+    /* Theme-matched card icons: show the right variant per theme */
+    html[data-theme="dark"] img.icon-light{display:none}
+    html[data-theme="light"] img.icon-dark{display:none}
 
     /* ============ Language switching ============ */
     html.lang-nl .en{display:none !important}
@@ -141,7 +147,7 @@
       background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
       padding:1.4rem; box-shadow:var(--shadow); display:flex; flex-direction:column;
     }
-    .card img{width:100%; aspect-ratio:16/10; object-fit:contain; background:var(--surface-2); padding:.5rem; border-radius:12px; margin-bottom:1rem}
+    .card img{width:100%; aspect-ratio:16/10; object-fit:contain; background:var(--icon-bg); border-radius:12px; margin-bottom:1rem}
     .card .tag{
       align-self:flex-start; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
       background:var(--lemon); color:var(--green-deep); padding:.28rem .65rem; border-radius:999px; margin-bottom:.7rem;
@@ -292,7 +298,8 @@
 
         <div class="cards">
           <article class="card">
-            <img src="assets/MS-ZT-Image.png" alt="Microsoft Zero Trust" />
+            <img class="icon-dark" src="assets/icons/zero-trust-entra-id-dark.png" alt="Zero Trust identity security" />
+            <img class="icon-light" src="assets/icons/zero-trust-entra-id-light.png" alt="Zero Trust identity security" />
             <span class="tag"><span class="nl">Identiteit &amp; toegang</span><span class="en">Identity &amp; access</span></span>
             <h3><span class="nl">Zero Trust-toegangscontrole</span><span class="en">Zero Trust access control</span></h3>
             <p class="nl">Geen blind vertrouwen meer. Elke toegang wordt gecontroleerd – op kantoor, thuis of onderweg.</p>
@@ -307,7 +314,8 @@
           </article>
 
           <article class="card">
-            <img src="assets/LM-MDE.png" alt="Microsoft Defender for Endpoint" />
+            <img class="icon-dark" src="assets/icons/defender-xdr-dark.png" alt="Microsoft Defender Suite" />
+            <img class="icon-light" src="assets/icons/defender-xdr-light.png" alt="Microsoft Defender Suite" />
             <span class="tag"><span class="nl">Endpoint-beveiliging</span><span class="en">Endpoint security</span></span>
             <h3>Microsoft Defender Suite</h3>
             <p class="nl">Uw apparaten, e-mail en clouddiensten worden actief bewaakt en beschermd – automatisch en 24/7.</p>
@@ -322,7 +330,8 @@
           </article>
 
           <article class="card">
-            <img src="assets/LM-MD-v2.png" alt="Security monitoring" />
+            <img class="icon-dark" src="assets/icons/security-monitoring-response-dark.png" alt="Security monitoring & response" />
+            <img class="icon-light" src="assets/icons/security-monitoring-response-light.png" alt="Security monitoring & response" />
             <span class="tag">Monitoring &amp; response</span>
             <h3><span class="nl">Security-monitoring &amp; incident response</span><span class="en">Security monitoring &amp; incident response</span></h3>
             <p class="nl">Wij bewaken uw tenant continu en reageren op beveiligingsincidenten – vóórdat ze een probleem worden.</p>
@@ -336,7 +345,8 @@
           </article>
 
           <article class="card">
-            <img src="assets/LM-MDO.png" alt="Compliance management" />
+            <img class="icon-dark" src="assets/icons/purview-data-compliance-dark.png" alt="Purview data compliance" />
+            <img class="icon-light" src="assets/icons/purview-data-compliance-light.png" alt="Purview data compliance" />
             <span class="tag"><span class="nl">Gegevensbescherming &amp; compliance</span><span class="en">Data protection &amp; compliance</span></span>
             <h3>Compliance-management</h3>
             <p class="nl">Sensitivity labels, Data Loss Prevention, retentiebeleid – uw data is geclassificeerd, beschermd en compliant.</p>
@@ -350,7 +360,8 @@
           </article>
 
           <article class="card">
-            <img src="assets/LM-MDI.png" alt="Security assessment" />
+            <img class="icon-dark" src="assets/icons/security-assessment-dark.png" alt="Security assessment" />
+            <img class="icon-light" src="assets/icons/security-assessment-light.png" alt="Security assessment" />
             <span class="tag"><span class="nl">Tenant-analyse</span><span class="en">Tenant analysis</span></span>
             <h3>Security assessment</h3>
             <p class="nl">Voor bestaande M365-tenants: wij analyseren uw huidige beveiliging en leveren duidelijke aanbevelingen.</p>
@@ -364,7 +375,8 @@
           </article>
 
           <article class="card">
-            <img src="assets/LM-PIM-AR.png" alt="Security awareness" />
+            <img class="icon-dark" src="assets/icons/awareness-training-dark.png" alt="Security awareness training" />
+            <img class="icon-light" src="assets/icons/awareness-training-light.png" alt="Security awareness training" />
             <span class="tag"><span class="nl">Medewerkers</span><span class="en">People</span></span>
             <h3>Security awareness training</h3>
             <p class="nl">De mens is het grootste beveiligingsrisico – én de grootste kracht. Wij trainen uw medewerkers praktijkgericht en duurzaam.</p>
