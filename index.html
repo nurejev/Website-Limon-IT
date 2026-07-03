@@ -167,6 +167,15 @@
     /* ============ Scan vs analyse ============ */
     .duo{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-top:1.6rem}
 
+    /* ============ Werkwijze ============ */
+    .werkwijze-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:1.6rem; align-items:center; margin-top:1.6rem}
+    .werkwijze-visual img{width:100%; max-width:440px; display:block; margin:0 auto; border-radius:var(--radius)}
+    .steps{display:grid; gap:1rem}
+    .steps .project{align-items:flex-start}
+    .steps .project strong{display:block; color:var(--ink); font-size:1.05rem; margin-bottom:.25rem}
+    .werkwijze-result{margin:.4rem 0 0; color:var(--ink-2)}
+    .werkwijze-result strong{color:var(--accent)}
+
     /* ============ Partners ============ */
     .partners-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:1.6rem; align-items:center; margin-top:1.6rem}
     .partners-visual img{width:100%; max-width:440px; display:block; margin:0 auto; border-radius:var(--radius)}
@@ -229,6 +238,9 @@
       .results-grid{grid-template-columns:1fr 112px; gap:.9rem; align-items:start}
       .results-visual{align-self:start; position:sticky; top:80px}
       .results-visual img{max-width:112px}
+      .werkwijze-grid{grid-template-columns:112px 1fr; gap:.9rem; align-items:start}
+      .werkwijze-visual{align-self:start; position:sticky; top:80px}
+      .werkwijze-visual img{max-width:112px}
       .nav-links{
         display:none; position:absolute; top:70px; left:1rem; right:1rem;
         background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
@@ -244,6 +256,8 @@
       .partners-visual img{max-width:84px}
       .results-grid{grid-template-columns:1fr 84px}
       .results-visual img{max-width:84px}
+      .werkwijze-grid{grid-template-columns:84px 1fr}
+      .werkwijze-visual img{max-width:84px}
     }
   </style>
 </head>
@@ -262,6 +276,7 @@
           <li><a href="#hero"><span class="nl">Home</span><span class="en">Home</span></a></li>
           <li><a href="#frameworks">Compliance</a></li>
           <li><a href="#diensten"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+          <li><a href="#werkwijze"><span class="nl">Werkwijze</span><span class="en">Approach</span></a></li>
           <li><a href="#projecten"><span class="nl">Projecten</span><span class="en">Projects</span></a></li>
           <li><a href="#partners">Partners</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -286,8 +301,8 @@
             <span class="nl">Veilig. Aantoonbaar. Compliant.</span>
             <span class="en">Secure. Provable. Compliant.</span>
           </h1>
-          <p class="nl">Zero Trust is geen buzzword – het is het enige zinnige antwoord op moderne dreigingen. Wij harden uw Microsoft 365-tenant, implementeren Zero Trust-toegangscontrole en werken volgens frameworks als CIS en Essential 8.</p>
-          <p class="en">Zero Trust is not a buzzword – it is the only sensible answer to modern threats. We harden your Microsoft 365 tenant, implement Zero Trust access control and work along frameworks such as CIS and Essential 8.</p>
+          <p class="nl">Zero Trust is geen hype, maar de enige logische reactie op de cyberdreigingen van vandaag. Wij beveiligen uw Microsoft 365-omgeving met Zero Trust-toegangscontroles en stemmen uw beveiligingsaanpak af op erkende frameworks zoals CIS Controls en de Essential Eight.</p>
+          <p class="en">Zero Trust is not a buzzword—it is the only sensible response to today’s cyber threats. We secure your Microsoft 365 environment by implementing Zero Trust access controls and aligning your security posture with industry-recognized frameworks such as CIS Controls and the Essential Eight.</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#contact"><span class="nl">Plan een security-check →</span><span class="en">Book a security check →</span></a>
             <a class="btn btn-ghost" href="mailto:info@limon-it.nl?subject=Tenant-analyse"><span class="nl">Vraag een tenant-analyse aan</span><span class="en">Request a tenant analysis</span></a>
@@ -462,7 +477,7 @@
               <li><span class="nl">Toetsing aan Zero Trust, CIS-benchmarks en Essential 8</span><span class="en">Assessment against Zero Trust, CIS benchmarks and Essential 8</span></li>
               <li><span class="nl">Rapport met kwetsbaarheden én de impact per bevinding</span><span class="en">Report with vulnerabilities and the impact of each finding</span></li>
               <li><span class="nl">Geprioriteerd maatregelenplan met stappenplan</span><span class="en">Prioritised action plan with roadmap</span></li>
-              <li><span class="nl">Resultaat binnen 48 uur, persoonlijk toegelicht</span><span class="en">Results within 48 hours, explained in person</span></li>
+              <li><span class="nl">Resultaat binnen 72 uur, persoonlijk toegelicht</span><span class="en">Results within 48 hours, explained in person</span></li>
             </ul>
           </article>
         </div>
@@ -470,6 +485,29 @@
     </section>
 
     <!-- ============ Projects ============ -->
+    <!-- ============ Werkwijze ============ -->
+    <section id="werkwijze" class="section">
+      <div class="container">
+        <span class="eyebrow"><span class="nl">Onze werkwijze</span><span class="en">How we work</span></span>
+        <h2><span class="nl">Van kennismaking tot overdracht</span><span class="en">From first meeting to handover</span></h2>
+        <p class="nl">Elk succesvol project begint met het begrijpen van uw organisatie. Wij geloven in een gestructureerde en transparante aanpak die leidt tot praktische en meetbare resultaten. Vanaf het eerste gesprek tot en met de overdracht werken we nauw samen met uw team aan een veilige en toekomstbestendige Microsoft-omgeving.</p>
+        <p class="en">Every successful project starts with understanding your organisation. We believe in a structured, transparent approach that leads to practical, measurable results. From the first conversation through to handover, we work closely with your team towards a secure, future-proof Microsoft environment.</p>
+        <div class="werkwijze-grid">
+          <div class="werkwijze-visual">
+            <img class="icon-dark" src="assets/icons/werkwijze-dark.svg?v=10" alt="Onze werkwijze" />
+            <img class="icon-light" src="assets/icons/werkwijze-light.svg?v=10" alt="Onze werkwijze" />
+          </div>
+          <div class="steps">
+            <div class="project"><b>01</b><span><strong class="nl">Kennismaken &amp; Luisteren</strong><strong class="en">Meet &amp; Listen</strong><span class="nl">We bespreken uw organisatie, de huidige uitdagingen en de gewenste resultaten. Ook kijken we naar eerdere initiatieven en stellen we de juiste vragen — ook als die kritisch zijn — om de echte risico's en kansen in beeld te brengen.</span><span class="en">We discuss your organisation, current challenges and desired outcomes. We also review previous initiatives and ask the right questions — including the critical ones — to reveal the real risks and opportunities.</span></span></div>
+            <div class="project"><b>02</b><span><strong class="nl">Analyseren &amp; Beoordelen</strong><strong class="en">Analyse &amp; Assess</strong><span class="nl">We brengen uw Microsoft-omgeving, beveiligingsniveau en processen in kaart. Door knelpunten en verbeterkansen te identificeren ontstaat een helder uitgangspunt voor een succesvolle implementatie.</span><span class="en">We map your Microsoft environment, security posture and processes. Identifying bottlenecks and opportunities creates a clear starting point for a successful implementation.</span></span></div>
+            <div class="project"><b>03</b><span><strong class="nl">Ontwerpen &amp; Implementeren</strong><strong class="en">Design &amp; Implement</strong><span class="nl">Samen bepalen we de juiste aanpak. Of het nu gaat om Zero Trust, Microsoft Defender, Intune of Entra ID, wij ontwerpen en implementeren een oplossing volgens Microsoft best practices, met minimale impact op de dagelijkse bedrijfsvoering.</span><span class="en">Together we determine the right approach. Whether it concerns Zero Trust, Microsoft Defender, Intune or Entra ID, we design and implement a solution following Microsoft best practices, with minimal impact on daily operations.</span></span></div>
+            <div class="project"><b>04</b><span><strong class="nl">Overdragen &amp; Optimaliseren</strong><strong class="en">Hand over &amp; Optimise</strong><span class="nl">Na de implementatie leveren we duidelijke documentatie, verzorgen we kennisoverdracht en controleren we of alles naar verwachting functioneert. Zo kan uw organisatie zelfstandig verder, met de zekerheid dat wij beschikbaar blijven voor optimalisatie en ondersteuning.</span><span class="en">After implementation we deliver clear documentation, provide knowledge transfer and verify that everything works as expected. Your organisation can move forward independently, knowing we remain available for optimisation and support.</span></span></div>
+            <p class="werkwijze-result"><span class="nl"><strong>Resultaat:</strong> een veilige, goed gedocumenteerde Microsoft-omgeving die klaar is voor de toekomst.</span><span class="en"><strong>The result:</strong> a secure, well-documented Microsoft environment that is ready for the future.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="projecten" class="projects section">
       <div class="container">
         <span class="eyebrow"><span class="nl">Geselecteerde opdrachten</span><span class="en">Selected engagements</span></span>
