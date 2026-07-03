@@ -326,10 +326,10 @@
         <p class="nl">Van Zero Trust-architectuur tot CIS-benchmarks, Essential 8 en de AVG – wij begeleiden u gestructureerd naar het doel.</p>
         <p class="en">From Zero Trust architecture to CIS benchmarks, Essential 8 and the GDPR – we guide you to the goal, step by step.</p>
         <div class="chips">
-          <div class="chip-card"><strong>Zero Trust</strong><span class="nl">Microsoft best practices</span><span class="en">Microsoft best practices</span></div>
-          <div class="chip-card"><strong>CIS</strong><span class="nl">Center for Internet Security-benchmarks</span><span class="en">Center for Internet Security benchmarks</span></div>
-          <div class="chip-card"><strong>Essential 8</strong><span class="nl">Australisch framework (ACSC)</span><span class="en">Australian framework (ACSC)</span></div>
-          <div class="chip-card"><strong>AVG / GDPR</strong><span class="nl">Gegevensbescherming</span><span class="en">Data protection</span></div>
+          <div class="chip-card"><strong>Zero Trust</strong><span class="nl">Nooit vertrouwen, altijd verifiëren: elke gebruiker, elk apparaat en elke sessie wordt expliciet gecontroleerd – volgens Microsoft best practices.</span><span class="en">Never trust, always verify: every user, device and session is explicitly validated – following Microsoft best practices.</span></div>
+          <div class="chip-card"><strong>CIS</strong><span class="nl">Wereldwijd erkende benchmarks van het Center for Internet Security: concrete, meetbare beveiligingsinstellingen voor uw Microsoft 365-omgeving.</span><span class="en">Globally recognized benchmarks from the Center for Internet Security: concrete, measurable security settings for your Microsoft 365 environment.</span></div>
+          <div class="chip-card"><strong>Essential 8</strong><span class="nl">Acht bewezen mitigatiestrategieën van het Australian Cyber Security Centre (ACSC) die de meest voorkomende aanvallen voorkomen en de impact ervan beperken.</span><span class="en">Eight proven mitigation strategies from the Australian Cyber Security Centre (ACSC) that prevent the most common attacks and limit their impact.</span></div>
+          <div class="chip-card"><strong>AVG / GDPR</strong><span class="nl">Europese privacywetgeving: wij richten uw tenant zó in dat persoonsgegevens aantoonbaar beschermd zijn en compliant worden verwerkt.</span><span class="en">European privacy law: we configure your tenant so personal data is demonstrably protected and processed in compliance.</span></div>
         </div>
       </div>
     </section>
@@ -648,7 +648,12 @@
       langBtn.textContent = l === 'nl' ? 'EN' : 'NL';
       localStorage.setItem('lang', l);
     }
-    applyLang(localStorage.getItem('lang') || 'nl');
+    // limon-it.eu is always English; ?lang=en/nl overrides; otherwise saved choice, default nl
+    const urlLang = new URLSearchParams(location.search).get('lang');
+    const isEU = location.hostname === 'limon-it.eu' || location.hostname.endsWith('.limon-it.eu');
+    applyLang(urlLang === 'en' || urlLang === 'nl' ? urlLang
+            : isEU ? 'en'
+            : localStorage.getItem('lang') || 'nl');
     langBtn.addEventListener('click', () =>
       applyLang(root.getAttribute('lang') === 'nl' ? 'en' : 'nl'));
 
