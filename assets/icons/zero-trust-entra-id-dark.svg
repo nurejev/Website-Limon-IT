@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<defs>
+  <filter id="glow" x="-150%" y="-150%" width="400%" height="400%">
+    <feGaussianBlur stdDeviation="6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="softglow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="10" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <radialGradient id="bgg" cx="50%" cy="42%" r="75%">
+    <stop offset="0%" stop-color="#0b1508"/><stop offset="100%" stop-color="#050a04"/>
+  </radialGradient>
+  <linearGradient id="goldg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#f6dd6a"/><stop offset="55%" stop-color="#e8c132"/>
+    <stop offset="100%" stop-color="#a8871c"/>
+  </linearGradient>
+  <linearGradient id="greeng" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#8fce3c"/><stop offset="60%" stop-color="#4a8c2a"/>
+    <stop offset="100%" stop-color="#2f5c1a"/>
+  </linearGradient></defs>
+<rect width="1024" height="1024" fill="url(#bgg)"/><circle cx="512" cy="512" r="330" fill="#4a8c2a" opacity="0.10"/><circle cx="512" cy="512" r="230" fill="#8fce3c" opacity="0.07"/>
+<circle cx="512" cy="512" r="400" fill="none" stroke="#5a7a2a" stroke-width="3" stroke-dasharray="2 14" opacity="0.9"/><circle cx="512" cy="512" r="400" fill="none" stroke="#e8c132" stroke-width="1.5" opacity="0.35"/><circle cx="769.1" cy="205.6" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="887.9" cy="648.8" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="512.0" cy="912.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="136.1" cy="648.8" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="254.9" cy="205.6" r="9" fill="#c8e84a" filter="url(#glow)"/>
+<g filter="url(#softglow)"><circle cx="512.0" cy="112.0" r="72" fill="#0d1a0a" stroke="#7ab438" stroke-width="6"/></g><g transform="translate(512.0,112.0) scale(0.82)"><rect x="-26" y="-6" width="52" height="40" rx="7" fill="none" stroke="#e8c132" stroke-width="7"/><path d="M-15,-6 L-15,-16 A15,15 0 0 1 15,-16 L15,-6" fill="none" stroke="#e8c132" stroke-width="7"/><circle cx="0" cy="12" r="6" fill="#e8c132"/></g>
+<g filter="url(#softglow)"><circle cx="903.3" cy="428.8" r="72" fill="#0d1a0a" stroke="#7ab438" stroke-width="6"/></g><g transform="translate(903.3,428.8) scale(0.82)"><rect x="-32" y="-30" width="64" height="18" rx="4" fill="none" stroke="#e8c132" stroke-width="6"/><circle cx="-22" cy="-21" r="3" fill="#e8c132"/><line x1="8" y1="-21" x2="24" y2="-21" stroke="#e8c132" stroke-width="5" stroke-linecap="round"/><rect x="-32" y="-6" width="64" height="18" rx="4" fill="none" stroke="#e8c132" stroke-width="6"/><circle cx="-22" cy="3" r="3" fill="#e8c132"/><line x1="8" y1="3" x2="24" y2="3" stroke="#e8c132" stroke-width="5" stroke-linecap="round"/><rect x="-32" y="18" width="64" height="18" rx="4" fill="none" stroke="#e8c132" stroke-width="6"/><circle cx="-22" cy="27" r="3" fill="#e8c132"/><line x1="8" y1="27" x2="24" y2="27" stroke="#e8c132" stroke-width="5" stroke-linecap="round"/></g>
+<g filter="url(#softglow)"><circle cx="741.4" cy="839.7" r="72" fill="#0d1a0a" stroke="#7ab438" stroke-width="6"/></g><g transform="translate(741.4,839.7) scale(0.82)"><path d="M-26,-10 A26,26 0 0 1 26,-10 L26,6" fill="none" stroke="#e8c132" stroke-width="6" stroke-linecap="round"/><path d="M-15,-8 A15,15 0 0 1 15,-8 L15,18" fill="none" stroke="#e8c132" stroke-width="6" stroke-linecap="round"/><path d="M-4,-6 A5,5 0 0 1 4,-6 L4,26" fill="none" stroke="#e8c132" stroke-width="6" stroke-linecap="round"/><path d="M-26,2 L-26,14 A26,26 0 0 0 -12,30" fill="none" stroke="#e8c132" stroke-width="6" stroke-linecap="round"/></g>
+<g filter="url(#softglow)"><circle cx="282.6" cy="839.7" r="72" fill="#0d1a0a" stroke="#7ab438" stroke-width="6"/></g><g transform="translate(282.6,839.7) scale(0.82)"><rect x="-20" y="-36" width="40" height="72" rx="8" fill="none" stroke="#e8c132" stroke-width="7"/><line x1="-8" y1="24" x2="8" y2="24" stroke="#e8c132" stroke-width="6" stroke-linecap="round"/></g>
+<g filter="url(#softglow)"><circle cx="120.7" cy="428.8" r="72" fill="#0d1a0a" stroke="#7ab438" stroke-width="6"/></g><g transform="translate(120.7,428.8) scale(0.82)"><path d="M-24,22 A15,15 0 0 1 -24,-6 A19,19 0 0 1 12,-14 A14,14 0 0 1 26,22 Z" fill="none" stroke="#e8c132" stroke-width="7" stroke-linejoin="round"/></g>
+<circle cx="512" cy="512" r="330" fill="none" stroke="#e8c132" stroke-width="2" opacity="0.5"/><circle cx="512" cy="512" r="270" fill="none" stroke="#4a8c2a" stroke-width="2" opacity="0.5"/><g transform="translate(512,505) scale(1.32)" filter="url(#softglow)"><path d="M0,-110 L95,-78 L95,-6 C95,62 55,112 0,134 C-55,112 -95,62 -95,-6 L-95,-78 Z" fill="#0b1508" stroke="url(#goldg)" stroke-width="14"/><circle cx="0" cy="-30" r="34" fill="url(#goldg)"/><path d="M-60,92 C-60,30 -32,12 0,12 C32,12 60,30 60,92 C34,110 -34,110 -60,92 Z" fill="url(#goldg)"/><circle cx="0" cy="46" r="15" fill="#0b1508"/><path d="M-9,52 L-13,86 L13,86 L9,52 Z" fill="#0b1508"/></g>
+</svg>

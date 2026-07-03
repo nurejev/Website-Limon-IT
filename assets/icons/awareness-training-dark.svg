@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<defs>
+  <filter id="glow" x="-150%" y="-150%" width="400%" height="400%">
+    <feGaussianBlur stdDeviation="6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="softglow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="10" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <radialGradient id="bgg" cx="50%" cy="42%" r="75%">
+    <stop offset="0%" stop-color="#0b1508"/><stop offset="100%" stop-color="#050a04"/>
+  </radialGradient>
+  <linearGradient id="goldg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#f6dd6a"/><stop offset="55%" stop-color="#e8c132"/>
+    <stop offset="100%" stop-color="#a8871c"/>
+  </linearGradient>
+  <linearGradient id="greeng" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#8fce3c"/><stop offset="60%" stop-color="#4a8c2a"/>
+    <stop offset="100%" stop-color="#2f5c1a"/>
+  </linearGradient></defs>
+<rect width="1024" height="1024" fill="url(#bgg)"/><circle cx="512" cy="512" r="330" fill="#4a8c2a" opacity="0.10"/><circle cx="512" cy="512" r="230" fill="#8fce3c" opacity="0.07"/>
+<circle cx="512" cy="512" r="400" fill="none" stroke="#5a7a2a" stroke-width="3" stroke-dasharray="2 14" opacity="0.9"/><circle cx="512" cy="512" r="400" fill="none" stroke="#e8c132" stroke-width="1.5" opacity="0.35"/><circle cx="512.0" cy="112.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="712.0" cy="165.6" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="858.4" cy="312.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="912.0" cy="512.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="858.4" cy="712.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="512.0" cy="912.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="165.6" cy="712.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="112.0" cy="512.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="165.6" cy="312.0" r="9" fill="#c8e84a" filter="url(#glow)"/><circle cx="312.0" cy="165.6" r="9" fill="#c8e84a" filter="url(#glow)"/>
+<g filter="url(#softglow)"><circle cx="312.0" cy="858.4" r="72" fill="#0d1a0a" stroke="#7ab438" stroke-width="6"/></g><g transform="translate(312.0,858.4) scale(0.82)"><path d="M0,-28 C-12,-38 -34,-38 -42,-32 L-42,26 C-34,20 -12,20 0,30 C12,20 34,20 42,26 L42,-32 C34,-38 12,-38 0,-28 Z" fill="none" stroke="#e8c132" stroke-width="7" stroke-linejoin="round"/><line x1="0" y1="-28" x2="0" y2="30" stroke="#e8c132" stroke-width="7"/></g>
+<g filter="url(#softglow)"><circle cx="712.0" cy="858.4" r="72" fill="#0d1a0a" stroke="#7ab438" stroke-width="6"/></g><g transform="translate(712.0,858.4) scale(0.82)"><circle cx="0" cy="-8" r="26" fill="none" stroke="#e8c132" stroke-width="7"/><path d="M-12,14 L-12,28 L12,28 L12,14" fill="none" stroke="#e8c132" stroke-width="7"/><line x1="-10" y1="38" x2="10" y2="38" stroke="#e8c132" stroke-width="7" stroke-linecap="round"/><path d="M0,-20 L-6,-4 L6,-4 L0,10" fill="none" stroke="#e8c132" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/></g>
+<g transform="translate(512,470)"><g transform="translate(0,105) scale(0.78)"><path d="M0,-110 L95,-78 L95,-6 C95,62 55,112 0,134 C-55,112 -95,62 -95,-6 L-95,-78 Z" fill="url(#goldg)" stroke="#a8871c" stroke-width="6"/><circle cx="0" cy="-30" r="30" fill="#2f5c1a"/><path d="M-52,80 C-52,28 -28,12 0,12 C28,12 52,28 52,80 C30,96 -30,96 -52,80 Z" fill="#2f5c1a"/></g><g transform="translate(0,-60)"><path d="M0,-70 L190,-6 L0,58 L-190,-6 Z" fill="url(#greeng)" stroke="#8fce3c" stroke-width="5" stroke-linejoin="round"/><path d="M-98,26 L-98,74 C-60,102 60,102 98,74 L98,26 L0,58 Z" fill="#2f5c1a" stroke="#8fce3c" stroke-width="4" stroke-linejoin="round"/><circle cx="0" cy="-6" r="9" fill="#e8c132"/><path d="M0,-6 C60,4 100,20 108,52" fill="none" stroke="#e8c132" stroke-width="6"/><line x1="108" y1="52" x2="108" y2="92" stroke="#e8c132" stroke-width="8"/><path d="M96,92 L120,92 L116,128 L100,128 Z" fill="url(#goldg)"/></g></g>
+</svg>
