@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Limon-IT — Microsoft Cloud Security & Compliance | Zoetermeer</title>
+  <meta name="description" content="Limon-IT hardt uw Microsoft 365-tenant, implementeert Zero Trust-toegangscontrole en begeleidt u naar ISO 27001-, NIS2- en AVG-compliance. Veilig. Aantoonbaar. Compliant." />
+  <meta name="theme-color" content="#12331f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============ Theme tokens (colours from the Limon-IT logo) ============ */
+    :root{
+      --lemon:#f7d65a;         /* logo lemon yellow */
+      --lemon-2:#f2c94c;
+      --green-deep:#12331f;    /* logo dark green */
+      --green:#1e4729;         /* logo shield green */
+      --green-soft:#8ca991;    /* logo sage */
+      --radius:16px;
+      --maxw:1120px;
+    }
+    html[data-theme="dark"]{
+      --bg:#0c1811;
+      --bg-2:#10241735;
+      --surface:#14261a;
+      --surface-2:#1a2f21;
+      --border:#26402f;
+      --ink:#eaf3ec;
+      --ink-2:#b9ccbe;
+      --muted:#8ca991;
+      --accent:var(--lemon);
+      --accent-ink:#12331f;
+      --hero-glow:radial-gradient(900px 500px at 85% -100px, #1e472955 0%, transparent 60%),
+                  radial-gradient(700px 400px at -10% 30%, #f7d65a14 0%, transparent 60%);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    html[data-theme="light"]{
+      --bg:#ffffff;
+      --bg-2:#f2f7f3;
+      --surface:#ffffff;
+      --surface-2:#f2f7f3;
+      --border:#dbe7de;
+      --ink:#12331f;
+      --ink-2:#33523d;
+      --muted:#5f7a67;
+      --accent:var(--green);
+      --accent-ink:#ffffff;
+      --hero-glow:radial-gradient(900px 500px at 85% -100px, #cdeed4 0%, transparent 60%),
+                  radial-gradient(700px 400px at -10% 30%, #fdf3c9 0%, transparent 60%);
+      --shadow:0 10px 30px rgba(18,51,31,.10);
+    }
+
+    /* ============ Language switching ============ */
+    html.lang-nl .en{display:none !important}
+    html.lang-en .nl{display:none !important}
+
+    /* ============ Base ============ */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg); color:var(--ink); line-height:1.65;
+      transition:background .3s,color .3s;
+    }
+    img{max-width:100%; display:block}
+    a{color:inherit}
+    .container{width:min(var(--maxw), calc(100% - 2.5rem)); margin-inline:auto}
+    .section{padding:clamp(56px,8vw,96px) 0}
+    h1,h2,h3{line-height:1.15; margin:0 0 .55em; font-weight:800}
+    h1{font-size:clamp(2.1rem,5vw,3.4rem); letter-spacing:-.02em}
+    h2{font-size:clamp(1.5rem,3.2vw,2.2rem); letter-spacing:-.01em}
+    h3{font-size:1.15rem}
+    p{margin:.3rem 0 1rem; color:var(--ink-2)}
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:.55rem;
+      font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--accent); margin-bottom:.9rem;
+    }
+    .eyebrow::before{content:""; width:26px; height:3px; border-radius:99px; background:var(--accent)}
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.85rem 1.35rem; border-radius:999px; font-weight:700; text-decoration:none;
+      border:1.5px solid transparent; transition:transform .15s, box-shadow .15s;
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow)}
+    .btn-primary{background:var(--lemon); color:var(--green-deep)}
+    .btn-ghost{border-color:var(--border); color:var(--ink); background:transparent}
+
+    /* ============ Header ============ */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter:blur(12px) saturate(160%);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; height:70px}
+    .brand{display:flex; align-items:center; gap:.65rem; font-weight:800; font-size:1.12rem; text-decoration:none; letter-spacing:-.01em}
+    .brand svg{height:38px; width:auto}
+    .nav-links{display:flex; align-items:center; gap:.2rem; list-style:none; margin:0; padding:0}
+    .nav-links a{
+      display:block; padding:.45rem .8rem; border-radius:999px;
+      text-decoration:none; font-weight:600; font-size:.95rem; color:var(--ink-2);
+    }
+    .nav-links a:hover{background:var(--surface-2); color:var(--ink)}
+    .nav-actions{display:flex; align-items:center; gap:.5rem}
+    .toggle{
+      display:inline-flex; align-items:center; justify-content:center;
+      height:38px; min-width:38px; padding:0 .6rem; border-radius:999px;
+      border:1px solid var(--border); background:var(--surface);
+      color:var(--ink); font:inherit; font-weight:700; font-size:.85rem; cursor:pointer;
+    }
+    .toggle:hover{border-color:var(--accent)}
+    .hamburger{display:none}
+
+    /* ============ Hero ============ */
+    .hero{background:var(--hero-glow), var(--bg)}
+    .hero-inner{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(2rem,5vw,4rem); align-items:center}
+    .badge{
+      display:inline-block; padding:.4rem .9rem; border-radius:999px;
+      background:var(--surface-2); border:1px solid var(--border);
+      font-size:.83rem; font-weight:600; color:var(--ink-2); margin-bottom:1.1rem;
+    }
+    .badge b{color:var(--accent)}
+    .hero-cta{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.4rem}
+    .hero-img{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--border)}
+
+    /* ============ Frameworks ============ */
+    .frameworks{background:var(--bg-2)}
+    .chips{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.5rem}
+    .chip-card{
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding:1.2rem 1.3rem; box-shadow:var(--shadow);
+    }
+    .chip-card strong{display:block; font-size:1.15rem; color:var(--ink); margin-bottom:.2rem}
+    .chip-card span{font-size:.88rem; color:var(--muted)}
+
+    /* ============ Services ============ */
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:1.6rem}
+    .card{
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding:1.4rem; box-shadow:var(--shadow); display:flex; flex-direction:column;
+    }
+    .card img{width:100%; aspect-ratio:16/10; object-fit:contain; background:var(--surface-2); padding:.5rem; border-radius:12px; margin-bottom:1rem}
+    .card .tag{
+      align-self:flex-start; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--lemon); color:var(--green-deep); padding:.28rem .65rem; border-radius:999px; margin-bottom:.7rem;
+    }
+    .card ul{list-style:none; margin:.4rem 0 0; padding:0}
+    .card li{padding:.28rem 0; color:var(--ink-2); font-size:.95rem}
+    .card li::before{content:"✓"; color:var(--accent); font-weight:800; margin-right:.55rem}
+
+    /* ============ Scan vs analyse ============ */
+    .duo{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-top:1.6rem}
+    .duo .card em{
+      display:inline-block; font-style:normal; font-size:.8rem; font-weight:700;
+      color:var(--accent); margin-bottom:.4rem; letter-spacing:.06em; text-transform:uppercase;
+    }
+
+    /* ============ Projects ============ */
+    .projects .cards{grid-template-columns:repeat(2,1fr)}
+    .project{
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding:1.1rem 1.3rem; box-shadow:var(--shadow); display:flex; gap:.9rem; align-items:baseline;
+    }
+    .project b{color:var(--accent); font-size:1.05rem}
+
+    /* ============ CTA banner ============ */
+    .cta{background:var(--green-deep); color:#eaf3ec; border-radius:var(--radius); padding:clamp(2rem,5vw,3.5rem); text-align:center; box-shadow:var(--shadow)}
+    .cta h2{color:#fff}
+    .cta p{color:#c6d6ca; max-width:640px; margin-inline:auto}
+
+    /* ============ Contact ============ */
+    .contact-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:1.2rem; margin-top:1.4rem}
+    .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow)}
+    .contact-card a{color:var(--accent); font-weight:600; text-decoration:none}
+    .contact-card a:hover{text-decoration:underline}
+
+    /* ============ Footer ============ */
+    footer{border-top:1px solid var(--border); background:var(--bg-2); padding:2.2rem 0; margin-top:2rem}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; color:var(--muted); font-size:.92rem}
+    .foot .brand{font-size:1rem}
+    .foot svg{height:30px}
+
+    /* ============ Mobile ============ */
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns:1fr}
+      .chips{grid-template-columns:repeat(2,1fr)}
+      .cards, .projects .cards, .duo{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .nav-links{
+        display:none; position:absolute; top:70px; left:1rem; right:1rem;
+        background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+        flex-direction:column; align-items:stretch; padding:.6rem; box-shadow:var(--shadow);
+      }
+      nav.open .nav-links{display:flex}
+      .hamburger{display:inline-flex}
+    }
+    @media (max-width: 480px){
+      .chips{grid-template-columns:1fr}
+      .hero-cta .btn{width:100%; justify-content:center}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ Header ============ -->
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="Limon-IT home">
+        <!-- Lemon-shield mark, colours from the logo -->
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="32" cy="38" rx="20" ry="23" fill="#f7d65a" stroke="#1e4729" stroke-width="3.5"/>
+          <path d="M32 15c-1-5 2-8 6-9" fill="none" stroke="#1e4729" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M30 12c-8-8-18-5-20-1 6 5 14 6 20 1z" fill="#1e4729"/>
+          <path d="M32 24l11 4v9c0 7-5 11-11 13-6-2-11-6-11-13v-9z" fill="#1e4729"/>
+          <circle cx="32" cy="36" r="4" fill="#f7d65a"/>
+          <path d="M30 38h4l1.5 8h-7z" fill="#f7d65a"/>
+        </svg>
+        <span>Limon-IT</span>
+      </a>
+      <nav id="site-nav">
+        <ul class="nav-links">
+          <li><a href="#hero"><span class="nl">Home</span><span class="en">Home</span></a></li>
+          <li><a href="#frameworks">Compliance</a></li>
+          <li><a href="#diensten"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+          <li><a href="#projecten"><span class="nl">Projecten</span><span class="en">Projects</span></a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="toggle" id="lang-toggle" aria-label="Switch language">EN</button>
+        <button class="toggle" id="theme-toggle" aria-label="Switch theme">☾</button>
+        <button class="toggle hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ Hero ============ -->
+    <section id="hero" class="hero section">
+      <div class="container hero-inner">
+        <div>
+          <span class="badge"><b>●</b> Security &amp; Compliance · Zero Trust</span>
+          <h1>
+            <span class="nl">Veilig. Aantoonbaar. Compliant.</span>
+            <span class="en">Secure. Provable. Compliant.</span>
+          </h1>
+          <p class="nl">Zero Trust is geen buzzword – het is het enige zinnige antwoord op moderne dreigingen. Wij harden uw Microsoft 365-tenant, implementeren Zero Trust-toegangscontrole en werken volgens frameworks als CIS en Essential 8.</p>
+          <p class="en">Zero Trust is not a buzzword – it is the only sensible answer to modern threats. We harden your Microsoft 365 tenant, implement Zero Trust access control and work along frameworks such as CIS and Essential 8.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#contact"><span class="nl">Plan een security-check →</span><span class="en">Book a security check →</span></a>
+            <a class="btn btn-ghost" href="mailto:info@limon-it.nl?subject=Tenant-analyse"><span class="nl">Vraag een tenant-analyse aan</span><span class="en">Request a tenant analysis</span></a>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img src="assets/image-2.png" alt="Limon-IT lemon shield logo" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Compliance frameworks ============ -->
+    <section id="frameworks" class="frameworks section">
+      <div class="container">
+        <span class="eyebrow"><span class="nl">Compliance-frameworks</span><span class="en">Compliance frameworks</span></span>
+        <h2>
+          <span class="nl">Wij kennen de eisen. U krijgt de bewijzen.</span>
+          <span class="en">We know the requirements. You get the evidence.</span>
+        </h2>
+        <p class="nl">Van Zero Trust-architectuur tot CIS-benchmarks, Essential 8 en de AVG – wij begeleiden u gestructureerd naar het doel.</p>
+        <p class="en">From Zero Trust architecture to CIS benchmarks, Essential 8 and the GDPR – we guide you to the goal, step by step.</p>
+        <div class="chips">
+          <div class="chip-card"><strong>Zero Trust</strong><span class="nl">Microsoft best practices</span><span class="en">Microsoft best practices</span></div>
+          <div class="chip-card"><strong>CIS</strong><span class="nl">Center for Internet Security-benchmarks</span><span class="en">Center for Internet Security benchmarks</span></div>
+          <div class="chip-card"><strong>Essential 8</strong><span class="nl">Australisch framework (ACSC)</span><span class="en">Australian framework (ACSC)</span></div>
+          <div class="chip-card"><strong>AVG / GDPR</strong><span class="nl">Gegevensbescherming</span><span class="en">Data protection</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Services ============ -->
+    <section id="diensten" class="section">
+      <div class="container">
+        <span class="eyebrow"><span class="nl">Onze security-diensten</span><span class="en">Our security services</span></span>
+        <h2>
+          <span class="nl">Wat wij concreet beveiligen</span>
+          <span class="en">What we actually secure</span>
+        </h2>
+        <p class="nl">Geen algemene security-beloftes. Concrete maatregelen die uw tenant écht beveiligen.</p>
+        <p class="en">No generic security promises. Concrete measures that truly secure your tenant.</p>
+
+        <div class="cards">
+          <article class="card">
+            <img src="assets/MS-ZT-Image.png" alt="Microsoft Zero Trust" />
+            <span class="tag"><span class="nl">Identiteit &amp; toegang</span><span class="en">Identity &amp; access</span></span>
+            <h3><span class="nl">Zero Trust-toegangscontrole</span><span class="en">Zero Trust access control</span></h3>
+            <p class="nl">Geen blind vertrouwen meer. Elke toegang wordt gecontroleerd – op kantoor, thuis of onderweg.</p>
+            <p class="en">No more blind trust. Every access is verified – in the office, at home or on the road.</p>
+            <ul>
+              <li><span class="nl">Conditional Access-beleid</span><span class="en">Conditional Access policies</span></li>
+              <li><span class="nl">Multi-factor authenticatie (MFA)</span><span class="en">Multi-factor authentication (MFA)</span></li>
+              <li>Passwordless authentication</li>
+              <li>Privileged Identity Management (PIM)</li>
+              <li><span class="nl">Entra ID-hardening</span><span class="en">Entra ID hardening</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <img src="assets/LM-MDE.png" alt="Microsoft Defender for Endpoint" />
+            <span class="tag"><span class="nl">Endpoint-beveiliging</span><span class="en">Endpoint security</span></span>
+            <h3>Microsoft Defender Suite</h3>
+            <p class="nl">Uw apparaten, e-mail en clouddiensten worden actief bewaakt en beschermd – automatisch en 24/7.</p>
+            <p class="en">Your devices, email and cloud services are actively monitored and protected – automatically, around the clock.</p>
+            <ul>
+              <li>Defender for Endpoint (Windows &amp; macOS)</li>
+              <li>Defender for Office 365</li>
+              <li>Defender for Identity</li>
+              <li>Defender for Cloud Apps</li>
+              <li><span class="nl">Attack Surface Reduction-regels</span><span class="en">Attack Surface Reduction rules</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <img src="assets/LM-MD-v2.png" alt="Security monitoring" />
+            <span class="tag">Monitoring &amp; response</span>
+            <h3><span class="nl">Security-monitoring &amp; incident response</span><span class="en">Security monitoring &amp; incident response</span></h3>
+            <p class="nl">Wij bewaken uw tenant continu en reageren op beveiligingsincidenten – vóórdat ze een probleem worden.</p>
+            <p class="en">We continuously monitor your tenant and respond to security incidents – before they become a problem.</p>
+            <ul>
+              <li><span class="nl">Microsoft Secure Score-optimalisatie</span><span class="en">Microsoft Secure Score optimisation</span></li>
+              <li><span class="nl">Security-alerts &amp; incidentmanagement</span><span class="en">Security alerts &amp; incident management</span></li>
+              <li><span class="nl">Maandelijkse security-rapportage</span><span class="en">Monthly security report</span></li>
+              <li><span class="nl">Threat intelligence-integratie</span><span class="en">Threat intelligence integration</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <img src="assets/LM-MDO.png" alt="Compliance management" />
+            <span class="tag"><span class="nl">Gegevensbescherming &amp; compliance</span><span class="en">Data protection &amp; compliance</span></span>
+            <h3>Compliance-management</h3>
+            <p class="nl">Sensitivity labels, Data Loss Prevention, retentiebeleid – uw data is geclassificeerd, beschermd en compliant.</p>
+            <p class="en">Sensitivity labels, Data Loss Prevention, retention policies – your data is classified, protected and compliant.</p>
+            <ul>
+              <li>Microsoft Purview</li>
+              <li>Sensitivity labels &amp; DLP</li>
+              <li><span class="nl">Retentiebeleid &amp; archivering</span><span class="en">Retention policies &amp; archiving</span></li>
+              <li><span class="nl">Compliance Score-optimalisatie</span><span class="en">Compliance Score optimisation</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <img src="assets/LM-MDI.png" alt="Security assessment" />
+            <span class="tag"><span class="nl">Tenant-analyse</span><span class="en">Tenant analysis</span></span>
+            <h3>Security assessment</h3>
+            <p class="nl">Voor bestaande M365-tenants: wij analyseren uw huidige beveiliging en leveren duidelijke aanbevelingen.</p>
+            <p class="en">For existing M365 tenants: we analyse your current security posture and deliver clear recommendations.</p>
+            <ul>
+              <li><span class="nl">Volledige tenant-analyse</span><span class="en">Full tenant analysis</span></li>
+              <li><span class="nl">Rapport met kwetsbaarheden</span><span class="en">Vulnerability report</span></li>
+              <li><span class="nl">Geprioriteerd maatregelenplan</span><span class="en">Prioritised action plan</span></li>
+              <li><span class="nl">Resultaat binnen 48 uur</span><span class="en">Results within 48 hours</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <img src="assets/LM-PIM-AR.png" alt="Security awareness" />
+            <span class="tag"><span class="nl">Medewerkers</span><span class="en">People</span></span>
+            <h3>Security awareness training</h3>
+            <p class="nl">De mens is het grootste beveiligingsrisico – én de grootste kracht. Wij trainen uw medewerkers praktijkgericht en duurzaam.</p>
+            <p class="en">People are the biggest security risk – and the greatest strength. We train your employees hands-on and sustainably.</p>
+            <ul>
+              <li><span class="nl">Phishing-simulaties</span><span class="en">Phishing simulations</span></li>
+              <li><span class="nl">Interactieve online trainingen</span><span class="en">Interactive online training</span></li>
+              <li><span class="nl">Geautomatiseerde campagnes</span><span class="en">Automated training campaigns</span></li>
+              <li><span class="nl">Bewijs voor compliance-audits</span><span class="en">Evidence for compliance audits</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Security scan vs tenant analyse ============ -->
+    <section id="scan-vs-analyse" class="frameworks section">
+      <div class="container">
+        <span class="eyebrow"><span class="nl">Wat past bij u?</span><span class="en">Which one fits you?</span></span>
+        <h2>
+          <span class="nl">Security-scan of tenant-analyse?</span>
+          <span class="en">Security scan or tenant analysis?</span>
+        </h2>
+        <p class="nl">Beide geven inzicht in de beveiliging van uw Microsoft 365-omgeving, maar verschillen in diepgang. De scan is de snelle foto, de analyse de volledige röntgenfoto.</p>
+        <p class="en">Both give insight into the security of your Microsoft 365 environment, but they differ in depth. The scan is the quick snapshot; the analysis is the full X-ray.</p>
+
+        <div class="duo">
+          <article class="card">
+            <em><span class="nl">Snel eerste inzicht</span><span class="en">Quick first insight</span></em>
+            <h3>Security-scan</h3>
+            <p class="nl">Een geautomatiseerde, snelle meting van uw huidige beveiligingsniveau. Ideaal als eerste kennismaking: binnen één dag weet u waar u staat, zonder impact op uw omgeving.</p>
+            <p class="en">An automated, rapid measurement of your current security level. Ideal as a first step: within one day you know where you stand, with zero impact on your environment.</p>
+            <ul>
+              <li><span class="nl">Microsoft Secure Score-meting</span><span class="en">Microsoft Secure Score measurement</span></li>
+              <li><span class="nl">Controle van de belangrijkste basisinstellingen (MFA, legacy authenticatie, admin-rollen)</span><span class="en">Check of key baseline settings (MFA, legacy authentication, admin roles)</span></li>
+              <li><span class="nl">Overzicht van de grootste risico's op hoofdlijnen</span><span class="en">High-level overview of your biggest risks</span></li>
+              <li><span class="nl">Quick wins die u direct kunt doorvoeren</span><span class="en">Quick wins you can apply immediately</span></li>
+              <li><span class="nl">Resultaat binnen 1 werkdag</span><span class="en">Results within 1 business day</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <em><span class="nl">Volledig beeld &amp; plan</span><span class="en">Complete picture &amp; plan</span></em>
+            <h3><span class="nl">Tenant-analyse</span><span class="en">Tenant analysis</span></h3>
+            <p class="nl">Een diepgaand, handmatig onderzoek van uw complete Microsoft 365-tenant door een specialist. Elke configuratie wordt getoetst aan Zero Trust, CIS en Essential 8 – inclusief concreet stappenplan.</p>
+            <p class="en">An in-depth, manual review of your entire Microsoft 365 tenant by a specialist. Every configuration is assessed against Zero Trust, CIS and Essential 8 – including a concrete roadmap.</p>
+            <ul>
+              <li><span class="nl">Volledige review van Entra ID, Intune, Defender en Purview</span><span class="en">Full review of Entra ID, Intune, Defender and Purview</span></li>
+              <li><span class="nl">Toetsing aan Zero Trust, CIS-benchmarks en Essential 8</span><span class="en">Assessment against Zero Trust, CIS benchmarks and Essential 8</span></li>
+              <li><span class="nl">Rapport met kwetsbaarheden én de impact per bevinding</span><span class="en">Report with vulnerabilities and the impact of each finding</span></li>
+              <li><span class="nl">Geprioriteerd maatregelenplan met stappenplan</span><span class="en">Prioritised action plan with roadmap</span></li>
+              <li><span class="nl">Resultaat binnen 48 uur, persoonlijk toegelicht</span><span class="en">Results within 48 hours, explained in person</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Projects ============ -->
+    <section id="projecten" class="projects section">
+      <div class="container">
+        <span class="eyebrow"><span class="nl">Projecten</span><span class="en">Projects</span></span>
+        <h2><span class="nl">Bewezen resultaten</span><span class="en">Proven results</span></h2>
+        <div class="cards">
+          <div class="project"><b>01</b><span class="nl">Implementatie Defender for Office bij Perfetti Van Melle</span><span class="en">Defender for Office implementation at Perfetti Van Melle</span></div>
+          <div class="project"><b>02</b><span class="nl">Implementatie Defender for Office bij Dovilo</span><span class="en">Defender for Office implementation at Dovilo</span></div>
+          <div class="project"><b>03</b><span class="nl">Implementatie Defender for Office bij D&amp;B The Facility Group</span><span class="en">Defender for Office implementation at D&amp;B The Facility Group</span></div>
+          <div class="project"><b>04</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij Media College Amsterdam</span><span class="en">Intune &amp; Defender for Endpoint implementation at Media College Amsterdam</span></div>
+          <div class="project"><b>05</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij Dovilo</span><span class="en">Intune &amp; Defender for Endpoint implementation at Dovilo</span></div>
+          <div class="project"><b>06</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij Leeuwendaal Advies</span><span class="en">Intune &amp; Defender for Endpoint implementation at Leeuwendaal Advies</span></div>
+          <div class="project"><b>07</b><span class="nl">Implementatie Entra ID Conditional Access &amp; PIM bij D&amp;B The Facility Group</span><span class="en">Entra ID Conditional Access &amp; PIM implementation at D&amp;B The Facility Group</span></div>
+          <div class="project"><b>08</b><span class="nl">Implementatie Entra ID Conditional Access &amp; PIM bij Dovilo</span><span class="en">Entra ID Conditional Access &amp; PIM implementation at Dovilo</span></div>
+          <div class="project"><b>09</b><span class="nl">Implementatie Entra ID Conditional Access &amp; PIM bij Leeuwendaal Advies</span><span class="en">Entra ID Conditional Access &amp; PIM implementation at Leeuwendaal Advies</span></div>
+          <div class="project"><b>10</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij D&amp;B The Facility Group</span><span class="en">Intune &amp; Defender for Endpoint implementation at D&amp;B The Facility Group</span></div>
+          <div class="project"><b>11</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij Perfetti Van Melle</span><span class="en">Intune &amp; Defender for Endpoint implementation at Perfetti Van Melle</span></div>
+          <div class="project"><b>12</b><span class="nl">Implementatie Entra ID Conditional Access &amp; PIM bij Perfetti Van Melle</span><span class="en">Entra ID Conditional Access &amp; PIM implementation at Perfetti Van Melle</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA banner ============ -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta">
+          <h2>
+            <span class="nl">Weet u hoe veilig uw Microsoft 365-tenant écht is?</span>
+            <span class="en">Do you know how secure your Microsoft 365 tenant really is?</span>
+          </h2>
+          <p class="nl">Plan nu uw gratis security-check. Binnen 48 uur ontvangt u een heldere inschatting van uw beveiliging – zonder vakjargon.</p>
+          <p class="en">Book your free security check now. Within 48 hours you will receive a clear assessment of your security posture – no jargon.</p>
+          <a class="btn btn-primary" href="mailto:info@limon-it.nl?subject=Gratis security-check">
+            <span class="nl">Gratis security-check aanvragen →</span><span class="en">Request a free security check →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact ============ -->
+    <section id="contact" class="section" style="padding-top:0">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h2><span class="nl">We denken graag met u mee</span><span class="en">Happy to think along with you</span></h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3><span class="nl">Voor inhoudelijke vragen</span><span class="en">Questions about our services</span></h3>
+            <p class="nl">Vragen over onze diensten, werkwijze of hoe Limon-IT uw organisatie kan helpen? Neem gerust contact op.</p>
+            <p class="en">Questions about our services, our approach or how Limon-IT can help your organisation? Get in touch.</p>
+            <p>
+              <strong><span class="nl">Telefoon</span><span class="en">Phone</span>:</strong> <a href="tel:+31612447920">+31 6 12447920</a><br>
+              <strong>E-mail:</strong> <a href="mailto:info@limon-it.nl">info@limon-it.nl</a><br>
+              <strong><span class="nl">Locatie</span><span class="en">Location</span>:</strong> <span class="nl">Zoetermeer, Nederland</span><span class="en">Zoetermeer, the Netherlands</span>
+            </p>
+          </div>
+          <div class="contact-card">
+            <h3>Privacy</h3>
+            <p class="nl">We gaan zorgvuldig met uw gegevens om. Deze statische website verzamelt geen persoonsgegevens.</p>
+            <p class="en">We handle your data with care. This static website does not collect any personal data.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer>
+    <div class="container foot">
+      <a href="#top" class="brand" aria-label="Limon-IT home">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="32" cy="38" rx="20" ry="23" fill="#f7d65a" stroke="#1e4729" stroke-width="3.5"/>
+          <path d="M32 15c-1-5 2-8 6-9" fill="none" stroke="#1e4729" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M30 12c-8-8-18-5-20-1 6 5 14 6 20 1z" fill="#1e4729"/>
+          <path d="M32 24l11 4v9c0 7-5 11-11 13-6-2-11-6-11-13v-9z" fill="#1e4729"/>
+          <circle cx="32" cy="36" r="4" fill="#f7d65a"/>
+          <path d="M30 38h4l1.5 8h-7z" fill="#f7d65a"/>
+        </svg>
+        <span>Limon-IT</span>
+      </a>
+      <div>
+        <span class="nl">Uw Microsoft Cloud Security Specialist — vanuit Zoetermeer, voor heel Nederland.</span>
+        <span class="en">Your Microsoft Cloud Security specialist — based in Zoetermeer, serving all of the Netherlands.</span>
+      </div>
+      <div>© <span id="year"></span> Limon-IT</div>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Theme (dark/light, persisted, follows system preference by default) ----------
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle');
+    function applyTheme(t){
+      root.setAttribute('data-theme', t);
+      themeBtn.textContent = t === 'dark' ? '☀' : '☾';
+      localStorage.setItem('theme', t);
+    }
+    applyTheme(localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+    themeBtn.addEventListener('click', () =>
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+
+    // ---------- Language (NL/EN, persisted) ----------
+    const langBtn = document.getElementById('lang-toggle');
+    function applyLang(l){
+      root.classList.remove('lang-nl','lang-en');
+      root.classList.add('lang-' + l);
+      root.setAttribute('lang', l);
+      langBtn.textContent = l === 'nl' ? 'EN' : 'NL';
+      localStorage.setItem('lang', l);
+    }
+    applyLang(localStorage.getItem('lang') || 'nl');
+    langBtn.addEventListener('click', () =>
+      applyLang(root.getAttribute('lang') === 'nl' ? 'en' : 'nl'));
+
+    // ---------- Mobile nav ----------
+    function toggleNav(){
+      const nav = document.getElementById('site-nav');
+      const open = nav.classList.toggle('open');
+      document.querySelector('.hamburger').setAttribute('aria-expanded', open);
+    }
+    document.querySelectorAll('.nav-links a').forEach(a =>
+      a.addEventListener('click', () => document.getElementById('site-nav').classList.remove('open')));
+
+    // ---------- Year ----------
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
