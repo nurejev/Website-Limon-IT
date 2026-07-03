@@ -166,6 +166,12 @@
 
     /* ============ Scan vs analyse ============ */
     .duo{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-top:1.6rem}
+
+    /* ============ Partners ============ */
+    .partners-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:1.6rem; align-items:center; margin-top:1.6rem}
+    .partners-visual img{width:100%; max-width:440px; display:block; margin:0 auto; border-radius:var(--radius)}
+    .partner-cards{display:grid; gap:1.2rem}
+    .partner-cards .card a{color:var(--accent); font-weight:600}
     .duo .card em{
       display:inline-block; font-style:normal; font-size:.8rem; font-weight:700;
       color:var(--accent); margin-bottom:.4rem; letter-spacing:.06em; text-transform:uppercase;
@@ -173,6 +179,9 @@
 
     /* ============ Projects ============ */
     .projects .cards{grid-template-columns:repeat(2,1fr)}
+    .results-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:1.6rem; align-items:center; margin-top:1.6rem}
+    .results-list{display:grid; gap:1rem}
+    .results-visual img{width:100%; max-width:440px; display:block; margin:0 auto; border-radius:var(--radius)}
     .project{
       background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
       padding:1.1rem 1.3rem; box-shadow:var(--shadow); display:flex; gap:.9rem; align-items:baseline;
@@ -211,6 +220,12 @@
       .cards .card .tag{grid-column:2; justify-self:start; align-self:end}
       .cards .card h3{grid-column:2; margin:0.2rem 0 0}
       .cards .card p, .cards .card ul{grid-column:1 / -1}
+      /* Partners & results: text first, small image below */
+      .partners-grid{grid-template-columns:1fr}
+      .partners-visual{order:2}
+      .partners-visual img{max-width:260px}
+      .results-grid{grid-template-columns:1fr}
+      .results-visual img{max-width:260px}
       .nav-links{
         display:none; position:absolute; top:70px; left:1rem; right:1rem;
         background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
@@ -241,6 +256,7 @@
           <li><a href="#frameworks">Compliance</a></li>
           <li><a href="#diensten"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
           <li><a href="#projecten"><span class="nl">Projecten</span><span class="en">Projects</span></a></li>
+          <li><a href="#partners">Partners</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -449,21 +465,51 @@
     <!-- ============ Projects ============ -->
     <section id="projecten" class="projects section">
       <div class="container">
-        <span class="eyebrow"><span class="nl">Projecten</span><span class="en">Projects</span></span>
+        <span class="eyebrow"><span class="nl">Geselecteerde opdrachten</span><span class="en">Selected engagements</span></span>
         <h2><span class="nl">Bewezen resultaten</span><span class="en">Proven results</span></h2>
-        <div class="cards">
-          <div class="project"><b>01</b><span class="nl">Implementatie Defender for Office bij Perfetti Van Melle</span><span class="en">Defender for Office implementation at Perfetti Van Melle</span></div>
-          <div class="project"><b>02</b><span class="nl">Implementatie Defender for Office bij Dovilo</span><span class="en">Defender for Office implementation at Dovilo</span></div>
-          <div class="project"><b>03</b><span class="nl">Implementatie Defender for Office bij D&amp;B The Facility Group</span><span class="en">Defender for Office implementation at D&amp;B The Facility Group</span></div>
-          <div class="project"><b>04</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij Media College Amsterdam</span><span class="en">Intune &amp; Defender for Endpoint implementation at Media College Amsterdam</span></div>
-          <div class="project"><b>05</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij Dovilo</span><span class="en">Intune &amp; Defender for Endpoint implementation at Dovilo</span></div>
-          <div class="project"><b>06</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij Leeuwendaal Advies</span><span class="en">Intune &amp; Defender for Endpoint implementation at Leeuwendaal Advies</span></div>
-          <div class="project"><b>07</b><span class="nl">Implementatie Entra ID Conditional Access &amp; PIM bij D&amp;B The Facility Group</span><span class="en">Entra ID Conditional Access &amp; PIM implementation at D&amp;B The Facility Group</span></div>
-          <div class="project"><b>08</b><span class="nl">Implementatie Entra ID Conditional Access &amp; PIM bij Dovilo</span><span class="en">Entra ID Conditional Access &amp; PIM implementation at Dovilo</span></div>
-          <div class="project"><b>09</b><span class="nl">Implementatie Entra ID Conditional Access &amp; PIM bij Leeuwendaal Advies</span><span class="en">Entra ID Conditional Access &amp; PIM implementation at Leeuwendaal Advies</span></div>
-          <div class="project"><b>10</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij D&amp;B The Facility Group</span><span class="en">Intune &amp; Defender for Endpoint implementation at D&amp;B The Facility Group</span></div>
-          <div class="project"><b>11</b><span class="nl">Implementatie Intune &amp; Defender for Endpoint bij Perfetti Van Melle</span><span class="en">Intune &amp; Defender for Endpoint implementation at Perfetti Van Melle</span></div>
-          <div class="project"><b>12</b><span class="nl">Implementatie Entra ID Conditional Access &amp; PIM bij Perfetti Van Melle</span><span class="en">Entra ID Conditional Access &amp; PIM implementation at Perfetti Van Melle</span></div>
+        <div class="results-grid">
+          <div class="results-list">
+            <div class="project"><b>01</b><span class="nl">Internationale zoetwarenfabrikant (45.000+ medewerkers) – Microsoft Defender, Intune, Entra ID &amp; Zero Trust</span><span class="en">International confectionery manufacturer (45,000+ employees) – Microsoft Defender, Intune, Entra ID &amp; Zero Trust</span></div>
+            <div class="project"><b>02</b><span class="nl">Landelijke onderwijsorganisatie – Intune &amp; Defender for Endpoint</span><span class="en">National education organization – Intune &amp; Defender for Endpoint</span></div>
+            <div class="project"><b>03</b><span class="nl">Facilitaire dienstverlener – Microsoft Defender, Intune en Identity Security</span><span class="en">Facility services provider – Microsoft Defender, Intune and Identity Security</span></div>
+            <div class="project"><b>04</b><span class="nl">IT managed services provider – implementatie Microsoft Security Platform</span><span class="en">IT managed services provider – Microsoft Security Platform implementation</span></div>
+            <div class="project"><b>05</b><span class="nl">Executive search- &amp; consultancyorganisatie – Endpoint- en Identity Security</span><span class="en">Executive search &amp; consultancy organization – Endpoint and Identity Security</span></div>
+          </div>
+          <div class="results-visual">
+            <img class="icon-dark" src="assets/icons/proven-results-dark.svg" alt="Bewezen resultaten" />
+            <img class="icon-light" src="assets/icons/proven-results-light.svg" alt="Bewezen resultaten" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Partners ============ -->
+    <section id="partners" class="section">
+      <div class="container">
+        <span class="eyebrow"><span class="nl">Samenwerkende partners</span><span class="en">Collaboration partners</span></span>
+        <h2><span class="nl">Samen sterker</span><span class="en">Stronger together</span></h2>
+        <div class="partners-grid">
+          <div class="partners-visual">
+            <img class="icon-dark" src="assets/icons/collaboration-dark.svg" alt="Samenwerking" />
+            <img class="icon-light" src="assets/icons/collaboration-light.svg" alt="Samenwerking" />
+          </div>
+          <div class="partner-cards">
+            <article class="card">
+              <h3>CloudFellows</h3>
+              <p class="nl">Voor onze design- en implementatieconfiguraties maken wij gebruik van de frameworks en baselines van CloudFellows. Kijk ook eens op <a href="https://www.cloudfellows.nl" target="_blank" rel="noopener">www.cloudfellows.nl</a>.</p>
+              <p class="en">For our design and implementation configurations we build on the frameworks and baselines of CloudFellows. Also visit <a href="https://www.cloudfellows.nl" target="_blank" rel="noopener">www.cloudfellows.nl</a>.</p>
+            </article>
+            <article class="card">
+              <h3>DOVILO</h3>
+              <p class="nl">Voor vraagstukken over hybride cloudoplossingen of regulier beheer werken wij samen met Dovilo om deze vraag te vervullen. Kijk ook eens op hun website <a href="https://www.dovilo.eu" target="_blank" rel="noopener">www.dovilo.eu</a>.</p>
+              <p class="en">For hybrid cloud solutions or day-to-day managed services we partner with Dovilo to meet that demand. Also visit their website at <a href="https://www.dovilo.eu" target="_blank" rel="noopener">www.dovilo.eu</a>.</p>
+            </article>
+            <article class="card">
+              <h3><span class="nl">ZZP-netwerk</span><span class="en">Freelance network</span></h3>
+              <p class="nl">Om de groeiende vraag naar Microsoft Cloud-specialisten te vervullen werken wij veel samen met een groep zzp'ers (Cloud Fellows) om de vraag in deze krappe arbeidsmarkt te vervullen.</p>
+              <p class="en">To meet the growing demand for Microsoft Cloud specialists we frequently collaborate with a group of freelancers (Cloud Fellows) to fulfil demand in this tight labour market.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
