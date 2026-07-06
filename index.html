@@ -207,6 +207,8 @@
     .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow)}
     .contact-card a{color:var(--accent); font-weight:600; text-decoration:none}
     .contact-card a:hover{text-decoration:underline}
+    .contact-card .contact-visual{width:110px; border-radius:14px; margin-bottom:.9rem}
+    .inline-ico{vertical-align:-3px; margin-right:.45rem; color:var(--accent)}
     .contact-col{display:flex; flex-direction:column; gap:1.2rem}
     .contact-form{display:grid; gap:.9rem; margin-top:.6rem}
     .contact-form label{font-size:.85rem; font-weight:700; display:block; margin-bottom:.3rem}
@@ -638,6 +640,8 @@
         <h2><span class="nl">We denken graag met u mee</span><span class="en">Happy to think along with you</span></h2>
         <div class="contact-grid">
           <div class="contact-card">
+            <img class="icon-dark contact-visual" src="assets/icons/contact-dark.svg?v=10" alt="Contact" />
+            <img class="icon-light contact-visual" src="assets/icons/contact-light.svg?v=10" alt="Contact" />
             <h3><span class="nl">Stuur ons een bericht</span><span class="en">Send us a message</span></h3>
             <p class="nl">Vragen over onze diensten, werkwijze of hoe Limon-IT uw organisatie kan helpen? Vul het formulier in en we reageren snel.</p>
             <p class="en">Questions about our services, our approach or how Limon-IT can help your organisation? Fill in the form and we will get back to you shortly.</p>
@@ -673,8 +677,8 @@
             <div class="contact-card">
               <h3><span class="nl">Direct contact</span><span class="en">Direct contact</span></h3>
               <p>
-                <strong><span class="nl">Telefoon</span><span class="en">Phone</span>:</strong> <a href="tel:+31612447920">+31 6 12447920</a><br>
-                <strong><span class="nl">Locatie</span><span class="en">Location</span>:</strong> <span class="nl">Zoetermeer, Nederland</span><span class="en">Zoetermeer, the Netherlands</span>
+                <svg class="inline-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9Z"/></svg><strong><span class="nl">Telefoon</span><span class="en">Phone</span>:</strong> <a href="tel:+31612447920">+31 6 12447920</a><br>
+                <svg class="inline-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><strong><span class="nl">Locatie</span><span class="en">Location</span>:</strong> <span class="nl">Zoetermeer, Nederland</span><span class="en">Zoetermeer, the Netherlands</span>
               </p>
             </div>
             <div class="contact-card">
@@ -762,7 +766,7 @@
       btn.disabled = true;
       cstatus.className = 'form-status';
       const data = Object.fromEntries(new FormData(cform).entries());
-      data.access_key = 'YOUR_WEB3FORMS_ACCESS_KEY';
+      data.access_key = '97cd1964-5172-43cf-8d34-c1a7be4454b2';
       data.from_name = 'Limon-IT website';
       try {
         const res = await fetch('https://api.web3forms.com/submit', {
