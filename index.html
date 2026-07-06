@@ -207,6 +207,20 @@
     .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow)}
     .contact-card a{color:var(--accent); font-weight:600; text-decoration:none}
     .contact-card a:hover{text-decoration:underline}
+    .contact-col{display:flex; flex-direction:column; gap:1.2rem}
+    .contact-form{display:grid; gap:.9rem; margin-top:.6rem}
+    .contact-form label{font-size:.85rem; font-weight:700; display:block; margin-bottom:.3rem}
+    .contact-form input, .contact-form select, .contact-form textarea{
+      width:100%; padding:.7rem .85rem; border-radius:10px; border:1px solid var(--border);
+      background:var(--bg-2); color:inherit; font:inherit; font-size:.95rem;
+    }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{
+      outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent);
+    }
+    .contact-form textarea{min-height:130px; resize:vertical}
+    .form-status{font-size:.92rem; font-weight:600; display:none}
+    .form-status.ok{color:var(--accent); display:block}
+    .form-status.err{color:#d66; display:block}
 
     /* ============ Footer ============ */
     footer{border-top:1px solid var(--border); background:var(--bg-2); padding:2.2rem 0; margin-top:2rem}
@@ -306,7 +320,7 @@
           <p class="en">Zero Trust is not a buzzword—it is the only sensible response to today’s cyber threats. We secure your Microsoft 365 environment by implementing Zero Trust access controls and aligning your security posture with industry-recognized frameworks such as CIS Controls and the Essential Eight.</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#contact"><span class="nl">Plan een security-check →</span><span class="en">Book a security check →</span></a>
-            <a class="btn btn-ghost" href="mailto:info@limon-it.nl?subject=Tenant-analyse"><span class="nl">Vraag een tenant-analyse aan</span><span class="en">Request a tenant analysis</span></a>
+            <a class="btn btn-ghost" href="#contact"><span class="nl">Vraag een tenant-analyse aan</span><span class="en">Request a tenant analysis</span></a>
           </div>
         </div>
         <div class="hero-img">
@@ -610,7 +624,7 @@
           </h2>
           <p class="nl">Plan nu uw gratis security-check. Binnen 72 uur ontvangt u een heldere inschatting van uw beveiliging – zonder vakjargon.</p>
           <p class="en">Book your free security check now. Within 72 hours you will receive a clear assessment of your security posture – no jargon.</p>
-          <a class="btn btn-primary" href="mailto:info@limon-it.nl?subject=Gratis security-check">
+          <a class="btn btn-primary" href="#contact">
             <span class="nl">Gratis security-check aanvragen →</span><span class="en">Request a free security check →</span>
           </a>
         </div>
@@ -624,19 +638,50 @@
         <h2><span class="nl">We denken graag met u mee</span><span class="en">Happy to think along with you</span></h2>
         <div class="contact-grid">
           <div class="contact-card">
-            <h3><span class="nl">Voor inhoudelijke vragen</span><span class="en">Questions about our services</span></h3>
-            <p class="nl">Vragen over onze diensten, werkwijze of hoe Limon-IT uw organisatie kan helpen? Neem gerust contact op.</p>
-            <p class="en">Questions about our services, our approach or how Limon-IT can help your organisation? Get in touch.</p>
-            <p>
-              <strong><span class="nl">Telefoon</span><span class="en">Phone</span>:</strong> <a href="tel:+31612447920">+31 6 12447920</a><br>
-              <strong>E-mail:</strong> <a href="mailto:info@limon-it.nl">info@limon-it.nl</a><br>
-              <strong><span class="nl">Locatie</span><span class="en">Location</span>:</strong> <span class="nl">Zoetermeer, Nederland</span><span class="en">Zoetermeer, the Netherlands</span>
-            </p>
+            <h3><span class="nl">Stuur ons een bericht</span><span class="en">Send us a message</span></h3>
+            <p class="nl">Vragen over onze diensten, werkwijze of hoe Limon-IT uw organisatie kan helpen? Vul het formulier in en we reageren snel.</p>
+            <p class="en">Questions about our services, our approach or how Limon-IT can help your organisation? Fill in the form and we will get back to you shortly.</p>
+            <form id="contact-form" class="contact-form">
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+              <div>
+                <label for="cf-name"><span class="nl">Naam</span><span class="en">Name</span></label>
+                <input id="cf-name" type="text" name="name" required autocomplete="name">
+              </div>
+              <div>
+                <label for="cf-email">E-mail</label>
+                <input id="cf-email" type="email" name="email" required autocomplete="email">
+              </div>
+              <div>
+                <label for="cf-subject"><span class="nl">Onderwerp</span><span class="en">Subject</span></label>
+                <select id="cf-subject" name="subject" required>
+                  <option data-nl="Gratis security-check" data-en="Free security check">Gratis security-check</option>
+                  <option data-nl="Tenant-analyse" data-en="Tenant analysis">Tenant-analyse</option>
+                  <option data-nl="Algemene vraag" data-en="General question">Algemene vraag</option>
+                </select>
+              </div>
+              <div>
+                <label for="cf-message"><span class="nl">Bericht</span><span class="en">Message</span></label>
+                <textarea id="cf-message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <span class="nl">Verstuur bericht →</span><span class="en">Send message →</span>
+              </button>
+              <p class="form-status" id="form-status" role="status"></p>
+            </form>
           </div>
-          <div class="contact-card">
-            <h3>Privacy</h3>
-            <p class="nl">We gaan zorgvuldig met uw gegevens om. Deze statische website verzamelt geen persoonsgegevens.</p>
-            <p class="en">We handle your data with care. This static website does not collect any personal data.</p>
+          <div class="contact-col">
+            <div class="contact-card">
+              <h3><span class="nl">Direct contact</span><span class="en">Direct contact</span></h3>
+              <p>
+                <strong><span class="nl">Telefoon</span><span class="en">Phone</span>:</strong> <a href="tel:+31612447920">+31 6 12447920</a><br>
+                <strong><span class="nl">Locatie</span><span class="en">Location</span>:</strong> <span class="nl">Zoetermeer, Nederland</span><span class="en">Zoetermeer, the Netherlands</span>
+              </p>
+            </div>
+            <div class="contact-card">
+              <h3>Privacy</h3>
+              <p class="nl">We gaan zorgvuldig met uw gegevens om. Gegevens uit het contactformulier worden uitsluitend gebruikt om uw bericht te beantwoorden. Deze website plaatst geen tracking-cookies.</p>
+              <p class="en">We handle your data with care. Contact form data is used solely to respond to your message. This website does not use tracking cookies.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -687,6 +732,8 @@
       root.setAttribute('lang', l);
       langBtn.textContent = l === 'nl' ? 'EN' : 'NL';
       localStorage.setItem('lang', l);
+      // translate contact-form subject options
+      document.querySelectorAll('#cf-subject option').forEach(o => o.textContent = o.dataset[l]);
     }
     // limon-it.eu is always English; ?lang=en/nl overrides; otherwise saved choice, default nl
     const urlLang = new URLSearchParams(location.search).get('lang');
@@ -705,6 +752,40 @@
     }
     document.querySelectorAll('.nav-links a').forEach(a =>
       a.addEventListener('click', () => document.getElementById('site-nav').classList.remove('open')));
+
+    // ---------- Contact form (Web3Forms — no email address in the page) ----------
+    const cform = document.getElementById('contact-form');
+    const cstatus = document.getElementById('form-status');
+    cform.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = cform.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      cstatus.className = 'form-status';
+      const data = Object.fromEntries(new FormData(cform).entries());
+      data.access_key = 'YOUR_WEB3FORMS_ACCESS_KEY';
+      data.from_name = 'Limon-IT website';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.success) {
+          cstatus.className = 'form-status ok';
+          cstatus.textContent = root.getAttribute('lang') === 'nl'
+            ? 'Bedankt voor uw bericht! We nemen snel contact met u op.'
+            : 'Thank you for your message! We will get back to you shortly.';
+          cform.reset();
+        } else { throw new Error(json.message); }
+      } catch {
+        cstatus.className = 'form-status err';
+        cstatus.textContent = root.getAttribute('lang') === 'nl'
+          ? 'Versturen mislukt. Probeer het later opnieuw of bel ons.'
+          : 'Sending failed. Please try again later or call us.';
+      }
+      btn.disabled = false;
+    });
 
     // ---------- Year ----------
     document.getElementById('year').textContent = new Date().getFullYear();
