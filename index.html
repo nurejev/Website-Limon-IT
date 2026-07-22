@@ -311,7 +311,7 @@
       </nav>
       <div class="nav-actions">
         <button class="toggle" id="lang-toggle" aria-label="Switch language">EN</button>
-        <button class="toggle" id="theme-toggle" aria-label="Switch theme">☾</button>
+        <button class="toggle" id="theme-toggle" aria-label="Switch theme">🌗</button>
         <button class="toggle hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">☰</button>
       </div>
     </div>
@@ -752,24 +752,35 @@
   </footer>
 
   <script>
-    // ---------- Theme: follows system (auto) unless the user picks one manually ----------
+    // ---------- Theme: Auto (device) → Light → Dark — same cycle as the CaDoc tool ----------
+    // Auto is the default and follows the OS live; clicking the button cycles the three modes.
     const root = document.documentElement;
     const themeBtn = document.getElementById('theme-toggle');
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     const mqLight = window.matchMedia('(prefers-color-scheme: light)');
-    function applyTheme(t, persist){
-      root.setAttribute('data-theme', t);
-      themeBtn.textContent = t === 'dark' ? '☀' : '☾';
-      themeMeta.setAttribute('content', t === 'dark' ? '#12331f' : '#ffffff');
-      if (persist) localStorage.setItem('theme', t);
+    const THEMES = [
+      { id: 'auto',  ico: '🌗', label: 'Auto (follows your device)' },
+      { id: 'light', ico: '☀️', label: 'Light' },
+      { id: 'dark',  ico: '🌙', label: 'Dark' },
+    ];
+    function applyTheme(id){
+      const t = THEMES.find(x => x.id === id) || THEMES[0];
+      const resolved = t.id === 'auto' ? (mqLight.matches ? 'light' : 'dark') : t.id;
+      root.setAttribute('data-theme', resolved);
+      themeBtn.textContent = t.ico;
+      themeBtn.title = `Theme: ${t.label} — click to change`;
+      themeMeta.setAttribute('content', resolved === 'dark' ? '#12331f' : '#ffffff');
+      try { localStorage.setItem('limon-theme', t.id); localStorage.removeItem('theme'); } catch { /* private mode */ }
+      return t.id;
     }
-    applyTheme(localStorage.getItem('theme') || (mqLight.matches ? 'light' : 'dark'), false);
-    // live auto-switch with the OS while no manual choice is stored
-    mqLight.addEventListener('change', e => {
-      if (!localStorage.getItem('theme')) applyTheme(e.matches ? 'light' : 'dark', false);
+    let theme = (() => { try { return localStorage.getItem('limon-theme') || 'auto'; } catch { return 'auto'; } })();
+    theme = applyTheme(theme);
+    // live auto-switch with the OS while Auto is selected
+    mqLight.addEventListener('change', () => { if (theme === 'auto') applyTheme('auto'); });
+    themeBtn.addEventListener('click', () => {
+      const i = THEMES.findIndex(x => x.id === theme);
+      theme = applyTheme(THEMES[(i + 1) % THEMES.length].id);
     });
-    themeBtn.addEventListener('click', () =>
-      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true));
 
     // ---------- Language (NL/EN, persisted) ----------
     const langBtn = document.getElementById('lang-toggle');
