@@ -575,11 +575,11 @@
           </div>
           <div>
             <article class="card">
-              <h3>Conditional Access Tools</h3>
-              <p class="nl">Bekijk, documenteer, analyseer en back-up uw Conditional Access-baseline. Blader door alle policies als kaarten, lijst of instellingenmatrix, genereer documentatie als Word, PDF of PNG, bouw een impactmatrix per gebruiker (wie omzeilt welke policy en waarom, en wie krijgt nergens MFA) en download JSON-back-ups. Alles draait volledig in uw browser met alleen-lezen Microsoft Graph-machtigingen: er verlaat geen policydata uw sessie.</p>
-              <p class="en">Browse, document, analyze and back up your Conditional Access baseline. View every policy as cards, a list or a settings matrix, generate documentation as Word, PDF or PNG, build a per-user impact matrix (who bypasses which policy and why, and who gets no MFA at all) and download JSON backups. Everything runs entirely in your browser with read-only Microsoft Graph permissions: no policy data ever leaves your session.</p>
+              <h3>ENCA — Conditional Access Tools</h3>
+              <p class="nl"><b>ENCA</b> (Entra Conditional Access). Bekijk, documenteer, analyseer en back-up uw Conditional Access-baseline. Blader door alle policies als kaarten, lijst of instellingenmatrix, genereer documentatie als Word, PDF of PNG, bouw een impactmatrix per gebruiker (wie omzeilt welke policy en waarom, en wie krijgt nergens MFA) en download JSON-back-ups. Alles draait volledig in uw browser met alleen-lezen Microsoft Graph-machtigingen: er verlaat geen policydata uw sessie.</p>
+              <p class="en"><b>ENCA</b> (Entra Conditional Access). Browse, document, analyze and back up your Conditional Access baseline. View every policy as cards, a list or a settings matrix, generate documentation as Word, PDF or PNG, build a per-user impact matrix (who bypasses which policy and why, and who gets no MFA at all) and download JSON backups. Everything runs entirely in your browser with read-only Microsoft Graph permissions: no policy data ever leaves your session.</p>
               <div class="hero-cta" style="margin-top:.8rem">
-                <a class="btn btn-primary" href="https://enca.limon-it.nl/" target="_blank" rel="noopener"><span class="nl">Open Conditional Access Tools →</span><span class="en">Open Conditional Access Tools →</span></a>
+                <a class="btn btn-primary" href="https://enca.limon-it.nl/" target="_blank" rel="noopener"><span class="nl">Open ENCA →</span><span class="en">Open ENCA →</span></a>
                 <a class="btn btn-ghost" href="https://enca.limon-it.nl/?demo=1" target="_blank" rel="noopener"><span class="nl">Bekijk de demo</span><span class="en">View the demo</span></a>
               </div>
             </article>
@@ -756,7 +756,7 @@
   </footer>
 
   <script>
-    // ---------- Theme: Auto (device) → Light → Dark — same cycle as the CaDoc tool ----------
+    // ---------- Theme: Auto (device) → Light → Dark — same cycle as the ENCA tool ----------
     // Auto is the default and follows the OS live; clicking the button cycles the three modes.
     const root = document.documentElement;
     const themeBtn = document.getElementById('theme-toggle');
@@ -806,7 +806,7 @@
     langBtn.addEventListener('click', () =>
       applyLang(root.getAttribute('lang') === 'nl' ? 'en' : 'nl'));
 
-    // ---------- Scroll-spy (CaDoc-style): highlight the nav link of the section in view ----------
+    // ---------- Scroll-spy (ENCA-style): highlight the nav link of the section in view ----------
     const spyLinks = new Map([...document.querySelectorAll('.nav-links a[href^="#"]')]
       .map(a => [a.getAttribute('href').slice(1), a]));
     const spySecs = [...spyLinks.keys()].map(id => document.getElementById(id)).filter(Boolean);
