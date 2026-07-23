@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tools — Limon-IT | Gratis Microsoft 365 security tools</title>
+  <meta name="description" content="Limon-IT hardt uw Microsoft 365-tenant, implementeert Zero Trust-toegangscontrole en begeleidt u naar ISO 27001-, NIS2- en AVG-compliance. Veilig. Aantoonbaar. Compliant." />
+  <meta name="theme-color" content="#12331f" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=10" />
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============ Theme tokens (colours from the Limon-IT logo) ============ */
+    :root{
+      --lemon:#f7d65a;         /* logo lemon yellow */
+      --lemon-2:#f2c94c;
+      --green-deep:#12331f;    /* logo dark green */
+      --green:#1e4729;         /* logo shield green */
+      --green-soft:#8ca991;    /* logo sage */
+      --radius:16px;
+      --maxw:1120px;
+    }
+    html[data-theme="dark"]{
+      --bg:#0c1811;
+      --bg-2:#10241735;
+      --surface:#14261a;
+      --surface-2:#1a2f21;
+      --border:#26402f;
+      --ink:#eaf3ec;
+      --ink-2:#b9ccbe;
+      --muted:#8ca991;
+      --accent:var(--lemon);
+      --accent-ink:#12331f;
+      --hero-glow:radial-gradient(900px 500px at 85% -100px, #1e472955 0%, transparent 60%),
+                  radial-gradient(700px 400px at -10% 30%, #f7d65a14 0%, transparent 60%);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --icon-bg:#030606;
+    }
+    html[data-theme="light"]{
+      --bg:#ffffff;
+      --bg-2:#f2f7f3;
+      --surface:#ffffff;
+      --surface-2:#f2f7f3;
+      --border:#dbe7de;
+      --ink:#12331f;
+      --ink-2:#33523d;
+      --muted:#5f7a67;
+      --accent:var(--green);
+      --accent-ink:#ffffff;
+      --hero-glow:radial-gradient(900px 500px at 85% -100px, #cdeed4 0%, transparent 60%),
+                  radial-gradient(700px 400px at -10% 30%, #fdf3c9 0%, transparent 60%);
+      --shadow:0 10px 30px rgba(18,51,31,.10);
+      --icon-bg:#fdfdfd;
+    }
+
+    /* Theme-matched card icons: show the right variant per theme */
+    html[data-theme="dark"] img.icon-light{display:none}
+    html[data-theme="light"] img.icon-dark{display:none}
+
+    /* ============ Language switching ============ */
+    html.lang-nl .en{display:none !important}
+    html.lang-en .nl{display:none !important}
+
+    /* ============ Base ============ */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    /* anchored sections land below the sticky header instead of hiding behind it */
+    section[id],main[id]{scroll-margin-top:86px}
+    body{
+      margin:0; font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg); color:var(--ink); line-height:1.65;
+      transition:background .3s,color .3s;
+    }
+    img{max-width:100%; display:block}
+    a{color:inherit}
+    .container{width:min(var(--maxw), calc(100% - 2.5rem)); margin-inline:auto}
+    .section{padding:clamp(56px,8vw,96px) 0}
+    h1,h2,h3{line-height:1.15; margin:0 0 .55em; font-weight:800}
+    h1{font-size:clamp(2.1rem,5vw,3.4rem); letter-spacing:-.02em}
+    h2{font-size:clamp(1.5rem,3.2vw,2.2rem); letter-spacing:-.01em}
+    h3{font-size:1.15rem}
+    p{margin:.3rem 0 1rem; color:var(--ink-2)}
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:.55rem;
+      font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--accent); margin-bottom:.9rem;
+    }
+    .eyebrow::before{content:""; width:26px; height:3px; border-radius:99px; background:var(--accent)}
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.85rem 1.35rem; border-radius:999px; font-weight:700; text-decoration:none;
+      border:1.5px solid transparent; transition:transform .15s, box-shadow .15s;
+    }
+    .btn:hover{transform:translateY(-2px); box-shadow:var(--shadow)}
+    .btn-primary{background:var(--lemon); color:var(--green-deep)}
+    .btn-ghost{border-color:var(--border); color:var(--ink); background:transparent}
+
+    /* ============ Header ============ */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter:blur(12px) saturate(160%);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; height:70px}
+    .brand{display:flex; align-items:center; gap:.65rem; font-weight:800; font-size:1.12rem; text-decoration:none; letter-spacing:-.01em}
+    .brand img{height:56px; width:auto; object-fit:contain; border-radius:10px}
+    .brand .wordmark{color:var(--ink)}
+    .brand .wordmark b{font-weight:800}
+    html[data-theme="dark"] .brand .wordmark b{color:#8fce3c}
+    html[data-theme="light"] .brand .wordmark b{color:#3f7a24}
+    .nav-links{display:flex; align-items:center; gap:.2rem; list-style:none; margin:0; padding:0}
+    .nav-links a{
+      display:block; padding:.45rem .8rem; border-radius:999px;
+      text-decoration:none; font-weight:600; font-size:.95rem; color:var(--ink-2);
+    }
+    .nav-links a:hover{background:var(--surface-2); color:var(--ink)}
+    .nav-links a.active{background:var(--accent); color:var(--accent-ink)}
+    .nav-links a.active:hover{background:var(--accent); color:var(--accent-ink)}
+    .nav-actions{display:flex; align-items:center; gap:.5rem}
+    .toggle{
+      display:inline-flex; align-items:center; justify-content:center;
+      height:38px; min-width:38px; padding:0 .6rem; border-radius:999px;
+      border:1px solid var(--border); background:var(--surface);
+      color:var(--ink); font:inherit; font-weight:700; font-size:.85rem; cursor:pointer;
+    }
+    .toggle:hover{border-color:var(--accent)}
+    .hamburger{display:none}
+
+    /* ============ Hero ============ */
+    .hero{background:var(--hero-glow), var(--bg)}
+    .hero-inner{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(2rem,5vw,4rem); align-items:center}
+    .badge{
+      display:inline-block; padding:.4rem .9rem; border-radius:999px;
+      background:var(--surface-2); border:1px solid var(--border);
+      font-size:.83rem; font-weight:600; color:var(--ink-2); margin-bottom:1.1rem;
+    }
+    .badge b{color:var(--accent)}
+    .hero-cta{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:1.4rem}
+    .hero-img{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--border)}
+
+    /* ============ Frameworks ============ */
+    .frameworks{background:var(--bg-2)}
+    .chips{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.5rem}
+    .chip-card{
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding:1.2rem 1.3rem; box-shadow:var(--shadow);
+    }
+    .chip-card strong{display:block; font-size:1.15rem; color:var(--ink); margin-bottom:.2rem}
+    .chip-card span{font-size:.88rem; color:var(--muted)}
+
+    /* ============ Services ============ */
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:1.6rem}
+    .card{
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding:1.4rem; box-shadow:var(--shadow); display:flex; flex-direction:column;
+    }
+    .card img{width:100%; aspect-ratio:4/3; object-fit:contain; background:var(--icon-bg); border-radius:12px; margin-bottom:1rem}
+    .card .tag{
+      align-self:flex-start; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--lemon); color:var(--green-deep); padding:.28rem .65rem; border-radius:999px; margin-bottom:.7rem;
+    }
+    .card ul{list-style:none; margin:.4rem 0 0; padding:0}
+    .card li{padding:.28rem 0; color:var(--ink-2); font-size:.95rem}
+    .card li::before{content:"✓"; color:var(--accent); font-weight:800; margin-right:.55rem}
+
+    /* ============ Scan vs analyse ============ */
+    .duo{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-top:1.6rem}
+
+    /* ============ Werkwijze ============ */
+    .werkwijze-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:1.6rem; align-items:center; margin-top:1.6rem}
+    .werkwijze-visual img{width:100%; max-width:440px; display:block; margin:0 auto; border-radius:var(--radius)}
+    .steps{display:grid; gap:1rem}
+    .steps .project{align-items:flex-start}
+    .steps .project strong{display:block; color:var(--ink); font-size:1.05rem; margin-bottom:.25rem}
+    .werkwijze-result{margin:.4rem 0 0; color:var(--ink-2)}
+    .werkwijze-result strong{color:var(--accent)}
+
+    /* ============ Partners ============ */
+    .partners-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:1.6rem; align-items:center; margin-top:1.6rem}
+    .partners-visual img{width:100%; max-width:440px; display:block; margin:0 auto; border-radius:var(--radius)}
+    .partner-cards{display:grid; gap:1.2rem}
+    .partner-cards .card a{color:var(--accent); font-weight:600}
+    .duo .card em{
+      display:inline-block; font-style:normal; font-size:.8rem; font-weight:700;
+      color:var(--accent); margin-bottom:.4rem; letter-spacing:.06em; text-transform:uppercase;
+    }
+
+    /* ============ Projects ============ */
+    .projects .cards{grid-template-columns:repeat(2,1fr)}
+    .results-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:1.6rem; align-items:center; margin-top:1.6rem}
+    .results-list{display:grid; gap:1rem}
+    .results-visual img{width:100%; max-width:440px; display:block; margin:0 auto; border-radius:var(--radius)}
+    .project{
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding:1.1rem 1.3rem; box-shadow:var(--shadow); display:flex; gap:.9rem; align-items:baseline;
+    }
+    .project b{color:var(--accent); font-size:1.05rem}
+
+    /* ============ CTA banner ============ */
+    .cta{background:var(--green-deep); color:#eaf3ec; border-radius:var(--radius); padding:clamp(2rem,5vw,3.5rem); text-align:center; box-shadow:var(--shadow)}
+    .cta h2{color:#fff}
+    .cta p{color:#c6d6ca; max-width:640px; margin-inline:auto}
+
+    /* ============ Contact ============ */
+    .contact-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:1.2rem; margin-top:1.4rem}
+    .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; box-shadow:var(--shadow)}
+    .contact-card a{color:var(--accent); font-weight:600; text-decoration:none}
+    .contact-card a:hover{text-decoration:underline}
+    .contact-card .contact-visual{width:110px; border-radius:14px; margin-bottom:.9rem}
+    .inline-ico{vertical-align:-3px; margin-right:.45rem; color:var(--accent)}
+    .contact-col{display:flex; flex-direction:column; gap:1.2rem}
+    .contact-form{display:grid; gap:.9rem; margin-top:.6rem}
+    .contact-form label{font-size:.85rem; font-weight:700; display:block; margin-bottom:.3rem}
+    .contact-form input, .contact-form select, .contact-form textarea{
+      width:100%; padding:.7rem .85rem; border-radius:10px; border:1px solid var(--border);
+      background:var(--bg-2); color:inherit; font:inherit; font-size:.95rem;
+    }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{
+      outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent);
+    }
+    .contact-form textarea{min-height:130px; resize:vertical}
+    .form-status{font-size:.92rem; font-weight:600; display:none}
+    .form-status.ok{color:var(--accent); display:block}
+    .form-status.err{color:#d66; display:block}
+    .form-success{display:none; text-align:center; padding:2.2rem 1rem}
+    .form-success.show{display:block}
+    .form-success .check{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:64px; height:64px; border-radius:50%; margin-bottom:1rem;
+      background:var(--accent); color:var(--accent-ink);
+    }
+    .form-success h4{margin:0 0 .35rem; font-size:1.2rem; color:var(--ink)}
+    .form-success p{margin:0; color:var(--ink-2)}
+
+    /* ============ Footer ============ */
+    footer{border-top:1px solid var(--border); background:var(--bg-2); padding:2.2rem 0; margin-top:2rem}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; color:var(--muted); font-size:.92rem}
+    .foot .brand{font-size:1rem}
+    .foot .brand img{height:48px; width:auto}
+
+    /* ============ Mobile ============ */
+    @media (max-width: 900px){
+      /* Hero: no logo on mobile, text only */
+      .hero-inner{grid-template-columns:1fr}
+      .hero-img{display:none}
+      .chips{grid-template-columns:repeat(2,1fr)}
+      .cards, .projects .cards, .duo{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      /* Service cards: small cropped icon beside the title, text takes priority */
+      .cards .card{display:grid; grid-template-columns:auto 1fr; column-gap:1rem; align-items:center}
+      .cards .card img{
+        width:92px; height:92px; aspect-ratio:1; margin-bottom:0; grid-row:span 2;
+        object-fit:contain; border-radius:12px;
+      }
+      .cards .card .tag{grid-column:2; justify-self:start; align-self:end}
+      .cards .card h3{grid-column:2; margin:0.2rem 0 0}
+      .cards .card p, .cards .card ul{grid-column:1 / -1}
+      /* Partners & results: small image beside the text, text takes priority */
+      .partners-grid{grid-template-columns:112px 1fr; gap:.9rem; align-items:start}
+      .partners-visual{align-self:start; position:sticky; top:80px}
+      .partners-visual img{max-width:112px}
+      .results-grid{grid-template-columns:1fr 112px; gap:.9rem; align-items:start}
+      .results-visual{align-self:start; position:sticky; top:80px}
+      .results-visual img{max-width:112px}
+      .werkwijze-grid{grid-template-columns:112px 1fr; gap:.9rem; align-items:start}
+      .werkwijze-visual{align-self:start; position:sticky; top:80px}
+      .werkwijze-visual img{max-width:112px}
+      .nav-links{
+        display:none; position:absolute; top:70px; left:1rem; right:1rem;
+        background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+        flex-direction:column; align-items:stretch; padding:.6rem; box-shadow:var(--shadow);
+      }
+      nav.open .nav-links{display:flex}
+      .hamburger{display:inline-flex}
+    }
+    @media (max-width: 480px){
+      .chips{grid-template-columns:1fr}
+      .hero-cta .btn{width:100%; justify-content:center}
+      .partners-grid{grid-template-columns:84px 1fr}
+      .partners-visual img{max-width:84px}
+      .results-grid{grid-template-columns:1fr 84px}
+      .results-visual img{max-width:84px}
+      .werkwijze-grid{grid-template-columns:84px 1fr}
+      .werkwijze-visual img{max-width:84px}
+    }
+
+    /* ============ Tools teaser list (homepage) ============ */
+    .tool-list{display:grid; gap:.7rem; margin:1.1rem 0 0}
+    .tool-list .project{text-decoration:none; transition:transform .15s, box-shadow .15s}
+    .tool-list .project:hover{transform:translateY(-2px); box-shadow:var(--shadow); border-color:var(--accent)}
+    .tool-list .project span{color:var(--ink-2); font-size:.95rem}
+
+    /* ============ Tools page cards ============ */
+    .tools-cards .card img{aspect-ratio:1/1; max-width:150px; margin-inline:auto}
+    .tools-cards .card h3{font-size:1.35rem; margin-bottom:.5rem}
+    .tools-cards .card p{font-size:.92rem}
+    .tools-cards .card a[class^="btn"]{padding:.7rem 1.05rem; font-size:.92rem}
+    @media (max-width:900px){
+      .tools-cards .card img{grid-row:span 2; max-width:92px; margin:0}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ Header ============ -->
+  <header>
+    <div class="container nav">
+      <a href="index.html#top" class="brand" aria-label="Limon-IT home">
+        <img class="icon-dark" src="assets/logo-mark-dark.svg?v=10" alt="">
+        <img class="icon-light" src="assets/logo-mark-light.svg?v=10" alt="">
+        <span class="wordmark">Limon-<b>IT</b></span>
+      </a>
+      <nav id="site-nav">
+        <ul class="nav-links">
+          <li><a href="index.html#hero"><span class="nl">Home</span><span class="en">Home</span></a></li>
+          <li><a href="index.html#frameworks">Compliance</a></li>
+          <li><a href="index.html#diensten"><span class="nl">Diensten</span><span class="en">Services</span></a></li>
+          <li><a href="index.html#werkwijze"><span class="nl">Werkwijze</span><span class="en">Approach</span></a></li>
+          <li><a href="index.html#projecten"><span class="nl">Projecten</span><span class="en">Projects</span></a></li>
+          <li><a href="tools.html" class="active">Tools</a></li>
+          <li><a href="index.html#partners">Partners</a></li>
+          <li><a href="index.html#over-ons"><span class="nl">Over ons</span><span class="en">About</span></a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="toggle" id="lang-toggle" aria-label="Switch language">EN</button>
+        <button class="toggle" id="theme-toggle" aria-label="Switch theme">🌗</button>
+        <button class="toggle hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ Tools intro ============ -->
+    <section class="hero section" style="padding-bottom:clamp(28px,4vw,40px)">
+      <div class="container">
+        <span class="eyebrow">Tools</span>
+        <h1><span class="nl">Gratis tools van Limon-IT</span><span class="en">Free tools by Limon-IT</span></h1>
+        <p class="nl">Naast onze dienstverlening ontwikkelen wij eigen tools: praktische, gratis hulpmiddelen voor iedereen die een Microsoft 365-omgeving beheert of beveiligt. Elke tool draait volledig in uw eigen browser met alleen-lezen Microsoft Graph-machtigingen: er verlaat geen data uw sessie.</p>
+        <p class="en">Alongside our services we build our own tools: practical, free utilities for anyone managing or securing a Microsoft 365 environment. Every tool runs entirely in your own browser with read-only Microsoft Graph permissions: no data ever leaves your session.</p>
+      </div>
+    </section>
+
+    <!-- ============ Tools grid ============ -->
+    <section id="tools-grid" class="frameworks section" style="padding-top:clamp(24px,4vw,40px)">
+      <div class="container">
+        <div class="cards tools-cards">
+
+          <!-- ENCA -->
+          <article id="enca" class="card">
+            <img class="icon-dark" src="assets/icons/enca-dark.svg?v=11" alt="ENCA — Conditional Access Tools" />
+            <img class="icon-light" src="assets/icons/enca-light.svg?v=11" alt="ENCA — Conditional Access Tools" />
+            <span class="tag">Conditional Access</span>
+            <h3>ENCA</h3>
+            <p class="nl"><b>Entra Conditional Access.</b> Bekijk, documenteer, analyseer en back-up uw Conditional Access-baseline. Blader door alle policies als kaarten, lijst of instellingenmatrix, genereer documentatie als Word, PDF of PNG, bouw een impactmatrix per gebruiker (wie omzeilt welke policy en waarom, en wie krijgt nergens MFA) en download JSON-back-ups.</p>
+            <p class="en"><b>Entra Conditional Access.</b> Browse, document, analyze and back up your Conditional Access baseline. View every policy as cards, a list or a settings matrix, generate documentation as Word, PDF or PNG, build a per-user impact matrix (who bypasses which policy and why, and who gets no MFA at all) and download JSON backups.</p>
+            <div class="hero-cta" style="margin-top:auto; padding-top:1rem">
+              <a class="btn btn-primary" href="https://enca.limon-it.nl/" target="_blank" rel="noopener">Open ENCA →</a>
+              <a class="btn btn-ghost" href="https://enca.limon-it.nl/?demo=1" target="_blank" rel="noopener"><span class="nl">Demo</span><span class="en">Demo</span></a>
+            </div>
+          </article>
+
+          <!-- M365 Triage -->
+          <article id="triage" class="card">
+            <img class="icon-dark" src="assets/icons/triage-dark.svg?v=11" alt="M365 Triage — Incident Response Tool" />
+            <img class="icon-light" src="assets/icons/triage-light.svg?v=11" alt="M365 Triage — Incident Response Tool" />
+            <span class="tag"><span class="nl">Incident Response</span><span class="en">Incident Response</span></span>
+            <h3>M365 Triage</h3>
+            <p class="nl"><b>Vermoedt u een gehackte mailbox of gecompromitteerd account?</b> Onderzoek het direct vanuit uw browser. Sign-in-historie, audit trail, inbox-regels en OAuth-misbruik worden in seconden geanalyseerd, gerangschikt op ernst en voorzien van concrete aanbevolen acties. Exporteer bevindingen als CSV, JSON of PDF. Geïnspireerd op de open-source <a href="https://github.com/invictus-ir/Microsoft-Extractor-Suite" target="_blank" rel="noopener">Microsoft-Extractor-Suite</a> van Invictus IR.</p>
+            <p class="en"><b>Suspect a hacked mailbox or a compromised account?</b> Investigate it right from your browser. Sign-in history, audit trail, inbox rules and OAuth abuse are analyzed in seconds, ranked by severity and paired with clear recommended actions. Export findings as CSV, JSON or PDF. Inspired by the open-source <a href="https://github.com/invictus-ir/Microsoft-Extractor-Suite" target="_blank" rel="noopener">Microsoft-Extractor-Suite</a> by Invictus IR.</p>
+            <div class="hero-cta" style="margin-top:auto; padding-top:1rem">
+              <a class="btn btn-primary" href="https://triage.limon-it.nl/" target="_blank" rel="noopener">Open Triage →</a>
+              <a class="btn btn-ghost" href="https://triage.limon-it.nl/?demo=1" target="_blank" rel="noopener"><span class="nl">Demo</span><span class="en">Demo</span></a>
+            </div>
+          </article>
+
+          <!-- The CIS Project -->
+          <article id="cis" class="card">
+            <img class="icon-dark" src="assets/icons/cis-dark.svg?v=11" alt="The CIS Tool — CIS Microsoft 365 Benchmark" />
+            <img class="icon-light" src="assets/icons/cis-light.svg?v=11" alt="The CIS Tool — CIS Microsoft 365 Benchmark" />
+            <span class="tag">CIS Benchmark</span>
+            <h3>The CIS Tool</h3>
+            <p class="nl"><b>Audit uw Microsoft 365-tenant tegen de CIS Microsoft 365 Foundations Benchmark v7.0.0</b> — 160 controls (Level 1 en 2). Meld u aan met uw Entra-account en de audit draait live in uw browser: read-only Graph-checks, er wordt niets gewijzigd en uw tenantdata wordt nergens opgeslagen. Download het rapport als HTML of Word (.docx), of exporteer naar CSV/JSON. Let op: uw tenant moet eerst door Limon-IT zijn onboard.</p>
+            <p class="en"><b>Audit your Microsoft 365 tenant against the CIS Microsoft 365 Foundations Benchmark v7.0.0</b> — 160 controls (Level 1 and 2). Sign in with your Entra account and the audit runs live in your browser: read-only Graph checks, nothing is changed and your tenant data is never stored. Download the report as HTML or Word (.docx), or export to CSV/JSON. Note: your tenant must be onboarded by Limon-IT first.</p>
+            <div class="hero-cta" style="margin-top:auto; padding-top:1rem">
+              <a class="btn btn-primary" href="https://thecistool.limon-it.nl/" target="_blank" rel="noopener">Open CIS Tool →</a>
+              <a class="btn btn-ghost" href="https://thecistool.limon-it.nl/" target="_blank" rel="noopener"><span class="nl">Demo</span><span class="en">Demo</span></a>
+            </div>
+          </article>
+
+        </div>
+        <p style="margin-top:1.6rem; text-align:center"><span class="nl">Meer tools volgen.</span><span class="en">More tools are on the way.</span></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer>
+    <div class="container foot">
+      <a href="index.html#top" class="brand" aria-label="Limon-IT home">
+        <img class="icon-dark" src="assets/logo-mark-dark.svg?v=10" alt="">
+        <img class="icon-light" src="assets/logo-mark-light.svg?v=10" alt="">
+        <span class="wordmark">Limon-<b>IT</b></span>
+      </a>
+      <div>
+        <span class="nl">Uw Microsoft Cloud Security Specialist, vanuit Zoetermeer voor heel Nederland.</span>
+        <span class="en">Your Microsoft Cloud Security specialist, based in Zoetermeer, serving all of the Netherlands.</span>
+      </div>
+      <div>© <span id="year"></span> Limon-IT</div>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Theme: Auto (device) → Light → Dark — same cycle as the ENCA tool ----------
+    // Auto is the default and follows the OS live; clicking the button cycles the three modes.
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const mqLight = window.matchMedia('(prefers-color-scheme: light)');
+    const THEMES = [
+      { id: 'auto',  ico: '🌗', label: 'Auto (follows your device)' },
+      { id: 'light', ico: '☀️', label: 'Light' },
+      { id: 'dark',  ico: '🌙', label: 'Dark' },
+    ];
+    function applyTheme(id){
+      const t = THEMES.find(x => x.id === id) || THEMES[0];
+      const resolved = t.id === 'auto' ? (mqLight.matches ? 'light' : 'dark') : t.id;
+      root.setAttribute('data-theme', resolved);
+      themeBtn.textContent = t.ico;
+      themeBtn.title = `Theme: ${t.label} — click to change`;
+      themeMeta.setAttribute('content', resolved === 'dark' ? '#12331f' : '#ffffff');
+      try { localStorage.setItem('limon-theme', t.id); localStorage.removeItem('theme'); } catch { /* private mode */ }
+      return t.id;
+    }
+    let theme = (() => { try { return localStorage.getItem('limon-theme') || 'auto'; } catch { return 'auto'; } })();
+    theme = applyTheme(theme);
+    // live auto-switch with the OS while Auto is selected
+    mqLight.addEventListener('change', () => { if (theme === 'auto') applyTheme('auto'); });
+    themeBtn.addEventListener('click', () => {
+      const i = THEMES.findIndex(x => x.id === theme);
+      theme = applyTheme(THEMES[(i + 1) % THEMES.length].id);
+    });
+
+    // ---------- Language (NL/EN, persisted) ----------
+    const langBtn = document.getElementById('lang-toggle');
+    function applyLang(l){
+      root.classList.remove('lang-nl','lang-en');
+      root.classList.add('lang-' + l);
+      root.setAttribute('lang', l);
+      langBtn.textContent = l === 'nl' ? 'EN' : 'NL';
+      localStorage.setItem('lang', l);
+      // translate contact-form subject options
+      document.querySelectorAll('#cf-subject option').forEach(o => o.textContent = o.dataset[l]);
+    }
+    // limon-it.eu is always English; ?lang=en/nl overrides; otherwise saved choice, default nl
+    const urlLang = new URLSearchParams(location.search).get('lang');
+    const isEU = location.hostname === 'limon-it.eu' || location.hostname.endsWith('.limon-it.eu');
+    applyLang(urlLang === 'en' || urlLang === 'nl' ? urlLang
+            : isEU ? 'en'
+            : localStorage.getItem('lang') || 'nl');
+    langBtn.addEventListener('click', () =>
+      applyLang(root.getAttribute('lang') === 'nl' ? 'en' : 'nl'));
+
+    // ---------- Scroll-spy (ENCA-style): highlight the nav link of the section in view ----------
+    const spyLinks = new Map([...document.querySelectorAll('.nav-links a[href^="#"]')]
+      .map(a => [a.getAttribute('href').slice(1), a]));
+    const spySecs = [...spyLinks.keys()].map(id => document.getElementById(id)).filter(Boolean);
+    const spySeen = new Set();
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting ? spySeen.add(e.target.id) : spySeen.delete(e.target.id));
+      const top = spySecs.find(s => spySeen.has(s.id));
+      spyLinks.forEach(a => a.classList.remove('active'));
+      if (top) spyLinks.get(top.id).classList.add('active');
+    }, { rootMargin: '-90px 0px -55% 0px', threshold: 0 });
+    spySecs.forEach(s => spy.observe(s));
+
+    // ---------- Mobile nav ----------
+    function toggleNav(){
+      const nav = document.getElementById('site-nav');
+      const open = nav.classList.toggle('open');
+      document.querySelector('.hamburger').setAttribute('aria-expanded', open);
+    }
+    document.querySelectorAll('.nav-links a').forEach(a =>
+      a.addEventListener('click', () => document.getElementById('site-nav').classList.remove('open')));
+
+    // ---------- Contact form (Web3Forms, no email address in the page) ----------
+    const cform = document.getElementById('contact-form');
+    const cstatus = document.getElementById('form-status');
+    if (cform) cform.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = cform.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      cstatus.className = 'form-status';
+      const data = Object.fromEntries(new FormData(cform).entries());
+      data.access_key = '97cd1964-5172-43cf-8d34-c1a7be4454b2';
+      data.from_name = 'Limon-IT website';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.success) {
+          // hide the form and show a clear confirmation; bring the form back after 8s
+          cform.reset();
+          cform.style.display = 'none';
+          const csuccess = document.getElementById('form-success');
+          csuccess.classList.add('show');
+          setTimeout(() => {
+            csuccess.classList.remove('show');
+            cform.style.display = '';
+          }, 8000);
+        } else { throw new Error(json.message); }
+      } catch {
+        cstatus.className = 'form-status err';
+        cstatus.textContent = root.getAttribute('lang') === 'nl'
+          ? 'Versturen mislukt. Probeer het later opnieuw of bel ons.'
+          : 'Sending failed. Please try again later or call us.';
+      }
+      btn.disabled = false;
+    });
+
+    // ---------- Year ----------
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -288,6 +288,12 @@
       .werkwijze-grid{grid-template-columns:84px 1fr}
       .werkwijze-visual img{max-width:84px}
     }
+
+    /* ============ Tools teaser list (homepage) ============ */
+    .tool-list{display:grid; gap:.7rem; margin:1.1rem 0 0}
+    .tool-list .project{text-decoration:none; transition:transform .15s, box-shadow .15s}
+    .tool-list .project:hover{transform:translateY(-2px); box-shadow:var(--shadow); border-color:var(--accent)}
+    .tool-list .project span{color:var(--ink-2); font-size:.95rem}
   </style>
 </head>
 <body>
@@ -574,25 +580,16 @@
             <img class="icon-light" src="assets/icons/tools-light.svg?v=10" alt="Limon-IT tools" />
           </div>
           <div>
-            <article class="card">
-              <h3>ENCA — Conditional Access Tools</h3>
-              <p class="nl"><b>ENCA</b> (Entra Conditional Access). Bekijk, documenteer, analyseer en back-up uw Conditional Access-baseline. Blader door alle policies als kaarten, lijst of instellingenmatrix, genereer documentatie als Word, PDF of PNG, bouw een impactmatrix per gebruiker (wie omzeilt welke policy en waarom, en wie krijgt nergens MFA) en download JSON-back-ups. Alles draait volledig in uw browser met alleen-lezen Microsoft Graph-machtigingen: er verlaat geen policydata uw sessie.</p>
-              <p class="en"><b>ENCA</b> (Entra Conditional Access). Browse, document, analyze and back up your Conditional Access baseline. View every policy as cards, a list or a settings matrix, generate documentation as Word, PDF or PNG, build a per-user impact matrix (who bypasses which policy and why, and who gets no MFA at all) and download JSON backups. Everything runs entirely in your browser with read-only Microsoft Graph permissions: no policy data ever leaves your session.</p>
-              <div class="hero-cta" style="margin-top:.8rem">
-                <a class="btn btn-primary" href="https://enca.limon-it.nl/" target="_blank" rel="noopener"><span class="nl">Open ENCA →</span><span class="en">Open ENCA →</span></a>
-                <a class="btn btn-ghost" href="https://enca.limon-it.nl/?demo=1" target="_blank" rel="noopener"><span class="nl">Bekijk de demo</span><span class="en">View the demo</span></a>
-              </div>
-            </article>
-            <article class="card" style="margin-top:1rem">
-              <h3>M365 Triage — Incident Response Tool</h3>
-              <p class="nl"><b>M365 Triage</b>. Vermoedt u een gehackte mailbox of een gecompromitteerd account? Onderzoek het direct vanuit uw browser. Sign-in-historie, audit trail, inbox-regels en OAuth-misbruik worden in seconden geanalyseerd, gerangschikt op ernst en voorzien van concrete aanbevolen acties. Exporteer bevindingen als CSV, JSON of PDF voor uw ticket of forensisch archief. Alles draait volledig in uw browser met alleen-lezen Microsoft Graph-machtigingen: er verlaat geen data uw sessie. Gemaakt door Limon-IT, geïnspireerd op de open-source <a href="https://github.com/invictus-ir/Microsoft-Extractor-Suite" target="_blank" rel="noopener">Microsoft-Extractor-Suite</a> van Invictus IR.</p>
-              <p class="en"><b>M365 Triage</b>. Suspect a hacked mailbox or a compromised account? Investigate it right from your browser. Sign-in history, audit trail, inbox rules and OAuth abuse are analyzed in seconds, ranked by severity and paired with clear recommended actions. Export findings as CSV, JSON or PDF for your ticket or forensic archive. Everything runs entirely in your browser with read-only Microsoft Graph permissions: no data ever leaves your session. Built by Limon-IT, inspired by the open-source <a href="https://github.com/invictus-ir/Microsoft-Extractor-Suite" target="_blank" rel="noopener">Microsoft-Extractor-Suite</a> by Invictus IR.</p>
-              <div class="hero-cta" style="margin-top:.8rem">
-                <a class="btn btn-primary" href="https://triage.limon-it.nl/" target="_blank" rel="noopener"><span class="nl">Open M365 Triage →</span><span class="en">Open M365 Triage →</span></a>
-                <a class="btn btn-ghost" href="https://triage.limon-it.nl/?demo=1" target="_blank" rel="noopener"><span class="nl">Bekijk de demo</span><span class="en">View the demo</span></a>
-              </div>
-            </article>
-            <p style="margin-top:.9rem"><span class="nl">Meer tools volgen.</span><span class="en">More tools are on the way.</span></p>
+            <p class="nl">Wij ontwikkelen eigen, <b>gratis</b> tools voor iedereen die een Microsoft 365-omgeving beheert of beveiligt. Ze draaien volledig in uw browser met alleen-lezen Microsoft Graph-machtigingen — er verlaat geen data uw sessie:</p>
+            <p class="en">We build our own <b>free</b> tools for anyone managing or securing a Microsoft 365 environment. They run entirely in your browser with read-only Microsoft Graph permissions — no data ever leaves your session:</p>
+            <div class="tool-list">
+              <a class="project" href="tools.html#enca"><b>ENCA</b><span><span class="nl">Conditional Access bekijken, documenteren en analyseren.</span><span class="en">Browse, document and analyze Conditional Access.</span></span></a>
+              <a class="project" href="tools.html#triage"><b>M365 Triage</b><span><span class="nl">Incident response voor gehackte accounts en mailboxen.</span><span class="en">Incident response for compromised accounts and mailboxes.</span></span></a>
+              <a class="project" href="tools.html#cis"><b>The CIS Tool</b><span><span class="nl">Uw tenant auditen tegen de CIS Microsoft 365 Benchmark.</span><span class="en">Audit your tenant against the CIS Microsoft 365 Benchmark.</span></span></a>
+            </div>
+            <div class="hero-cta" style="margin-top:1.2rem">
+              <a class="btn btn-primary" href="tools.html"><span class="nl">Bekijk alle tools →</span><span class="en">View all tools →</span></a>
+            </div>
           </div>
         </div>
       </div>
